@@ -214,16 +214,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 4200);
 
     setTimeout(() => {
-      const mist = document.querySelector('.hero-mist-backdrop');
-      const vignette = document.querySelector('.hero-top-vignette');
-      if (mist) mist.classList.add('is-revealed');
-      if (vignette) vignette.classList.add('is-revealed');
-    }, 5700);
-
-    setTimeout(() => {
       if (introSkipped) return;
       const greeting = document.querySelector('.hero-greeting');
-      if (greeting) greeting.classList.add('is-settling');
+      if (greeting) greeting.classList.add('is-fading-out');
     }, 6600);
 
     setTimeout(() => {
@@ -232,57 +225,69 @@ document.addEventListener('DOMContentLoaded', () => {
       if (greeting) {
         greeting.textContent = 'Om Swastyastu, tityang';
         greeting.setAttribute('lang', 'ban');
-        greeting.parentElement.classList.remove('is-blessing', 'is-settling');
+        greeting.parentElement.classList.remove('is-blessing', 'is-fading-out');
+        greeting.parentElement.classList.add('is-boot-hidden');
         greeting.parentElement.style.removeProperty('--hero-greeting-top');
         greeting.parentElement.style.removeProperty('--hero-greeting-left');
         greeting.parentElement.style.removeProperty('--hero-greeting-width');
       }
-      greetingRotationEnabled = true;
-    }, 7500);
+    }, 7300);
 
     setTimeout(() => {
+      if (introSkipped) return;
       if (header) header.classList.add('is-revealed');
       if (navBrandGroup) navBrandGroup.classList.add('is-revealed');
       const greeting = document.querySelector('.hero-greeting');
-      if (greeting) greeting.classList.add('is-revealed');
-    }, 7500);
+      if (greeting) {
+        greeting.classList.remove('is-boot-hidden');
+        greeting.classList.add('is-revealed');
+      }
+      const mist = document.querySelector('.hero-mist-backdrop');
+      const vignette = document.querySelector('.hero-top-vignette');
+      if (mist) mist.classList.add('is-revealed');
+      if (vignette) vignette.classList.add('is-revealed');
+      greetingRotationEnabled = true;
+    }, 7600);
 
     setTimeout(() => {
+      if (introSkipped) return;
       const name = document.querySelector('.hero-name');
       const navLinks = document.querySelector('.nav-links-wrap');
       if (name) name.classList.add('is-revealed');
       if (navLinks) navLinks.classList.add('is-revealed');
-    }, 7800);
+    }, 7900);
 
     setTimeout(() => {
+      if (introSkipped) return;
       const prof = document.querySelector('.hero-profession');
       const bio = document.querySelector('.hero-bio');
       if (prof) prof.classList.add('is-revealed');
       if (bio) bio.classList.add('is-revealed');
       if (hamburgerBtn) hamburgerBtn.classList.add('is-revealed');
-    }, 8100);
+    }, 8200);
 
     setTimeout(() => {
+      if (introSkipped) return;
       const actions = document.querySelector('.hero-actions');
       const social = document.querySelector('.social-row');
       if (actions) actions.classList.add('is-revealed');
       if (social) social.classList.add('is-revealed');
-    }, 8400);
+    }, 8500);
 
     // Reveal the hero photos only after every landing-page text element is visible.
     setTimeout(() => {
       if (introSkipped) return;
       if (heroModel) heroModel.classList.add('is-revealed');
       if (heroBg) heroBg.classList.add('is-revealed');
-    }, 9300);
+    }, 10100);
 
-    // 5. Grid guidelines & ikon layanan hospitality (8.9s)
+    // Reveal the grid and service labels before the portrait.
     setTimeout(() => {
       const grid = document.querySelector('.grid-container');
       const services = document.querySelector('.service-icons-bar');
       if (grid) grid.classList.add('is-revealed');
       if (services) services.classList.add('is-revealed');
-    }, 8900);
+    }, 9500);
 
     // Skip intro gracefully only on Escape or Space key
     const handleSkip = (e) => {
@@ -293,7 +298,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (greeting) {
         greeting.textContent = 'Om Swastyastu, tityang';
         greeting.setAttribute('lang', 'ban');
-        greeting.parentElement.classList.remove('is-blessing', 'is-settling');
+        greeting.parentElement.classList.remove('is-blessing', 'is-settling', 'is-fading-out', 'is-boot-hidden');
         greeting.parentElement.style.removeProperty('--hero-greeting-top');
         greeting.parentElement.style.removeProperty('--hero-greeting-left');
         greeting.parentElement.style.removeProperty('--hero-greeting-width');

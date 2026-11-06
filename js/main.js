@@ -497,18 +497,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     cinematicSections.forEach(section => {
-      const rect = section.getBoundingClientRect();
-      const progress = Math.min(1, Math.max(0, (windowHeight * 0.9 - rect.top) / (windowHeight * 1.35)));
+      const content = section.querySelector('.scroll-cinematic-content:not(.exp-divider)');
+      if (!content) return;
+
+      const currentContentProgress = Number(section.style.getPropertyValue('--section-content-progress')) || 0;
+      const contentShift = Number.parseFloat(getComputedStyle(content).getPropertyValue('--section-content-shift')) || 0;
+      const contentTop = content.getBoundingClientRect().top - (1 - currentContentProgress) * contentShift;
       const introOpacity = Math.min(
         1,
-        Math.max(0, progress / 0.2),
-        Math.max(0, (0.72 - progress) / 0.2)
+        Math.max(0, (contentTop - windowHeight * 0.45) / (windowHeight * 0.3))
       );
-      const contentProgress = Math.min(1, Math.max(0, (progress - 0.72) / 0.26));
+      const contentProgress = Math.min(
+        1,
+        Math.max(0, (windowHeight * 0.25 - contentTop) / (windowHeight * 0.2))
+      );
 
       section.style.setProperty('--section-intro-opacity', introOpacity.toFixed(3));
       section.style.setProperty('--section-content-progress', contentProgress.toFixed(3));
-      section.style.setProperty('--section-intro-offset', `${((1 - progress) * 22).toFixed(1)}px`);
+      const introOffset = Math.min(22, Math.max(0, (contentTop / windowHeight - 0.45) / 0.3 * 22));
+      section.style.setProperty('--section-intro-offset', `${introOffset.toFixed(1)}px`);
     });
 
     // Parallax on Experience Photos

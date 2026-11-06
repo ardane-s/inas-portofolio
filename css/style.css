@@ -1398,6 +1398,14 @@ body.dark-mode .btn-cv:hover svg {
 /* ============================================================
    RESPONSIVE DESIGN BREAKPOINTS
 ============================================================ */
+@media (min-width: 1201px) {
+  .hero-art-layer {
+    top: 86px;
+    width: 54%;
+    height: calc(100% - 86px);
+  }
+}
+
 @media (max-width: 1200px) {
   .hero-content-left {
     width: 58%;

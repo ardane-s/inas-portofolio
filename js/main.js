@@ -200,7 +200,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     setTimeout(() => {
       if (introSkipped) return;
-      if (heroModel) heroModel.classList.add('is-revealed');
       const greeting = document.getElementById('hero-greeting-text');
       if (greeting) {
         const greetingElement = greeting.parentElement;
@@ -270,10 +269,12 @@ document.addEventListener('DOMContentLoaded', () => {
       if (social) social.classList.add('is-revealed');
     }, 8400);
 
-    // 4. Foto background hotel PALING TERAKHIR (8.3s)
+    // Reveal the hero photos only after every landing-page text element is visible.
     setTimeout(() => {
+      if (introSkipped) return;
+      if (heroModel) heroModel.classList.add('is-revealed');
       if (heroBg) heroBg.classList.add('is-revealed');
-    }, 8300);
+    }, 9300);
 
     // 5. Grid guidelines & ikon layanan hospitality (8.9s)
     setTimeout(() => {

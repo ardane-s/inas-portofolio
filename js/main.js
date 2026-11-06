@@ -196,33 +196,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ── Deterministic Hero Reveal Sequence (Satu Persatu) ──
 
-    // 1. Model Subjek muncul pertama kali di atas kanvas putih (4.2s)
+    const isMobileHero = window.matchMedia('(max-width: 600px)').matches;
+
+    // On mobile, reveal the introduction before the portrait; keep the desktop sequence unchanged.
     setTimeout(() => {
       if (heroModel) heroModel.classList.add('is-revealed');
-    }, 4200);
+    }, isMobileHero ? 6400 : 4200);
 
-    // 2. Mist di sisi kiri muncul menyelimuti (5.3s)
+    // The ambient mist appears before the portrait on mobile.
     setTimeout(() => {
       const mist = document.querySelector('.hero-mist-backdrop');
       const vignette = document.querySelector('.hero-top-vignette');
       if (mist) mist.classList.add('is-revealed');
       if (vignette) vignette.classList.add('is-revealed');
-    }, 5300);
+    }, isMobileHero ? 5700 : 5300);
 
-    // 3. Navbar & Text Hero mengalir seirama (5.8s - 6.7s)
+    // Navbar and hero copy reveal first on mobile (4.2s - 5.1s).
     setTimeout(() => {
       if (header) header.classList.add('is-revealed');
       if (navBrandGroup) navBrandGroup.classList.add('is-revealed');
       const greeting = document.querySelector('.hero-greeting');
       if (greeting) greeting.classList.add('is-revealed');
-    }, 5800);
+    }, isMobileHero ? 4200 : 5800);
 
     setTimeout(() => {
       const name = document.querySelector('.hero-name');
       const navLinks = document.querySelector('.nav-links-wrap');
       if (name) name.classList.add('is-revealed');
       if (navLinks) navLinks.classList.add('is-revealed');
-    }, 6100);
+    }, isMobileHero ? 4500 : 6100);
 
     setTimeout(() => {
       const prof = document.querySelector('.hero-profession');
@@ -230,14 +232,14 @@ document.addEventListener('DOMContentLoaded', () => {
       if (prof) prof.classList.add('is-revealed');
       if (bio) bio.classList.add('is-revealed');
       if (hamburgerBtn) hamburgerBtn.classList.add('is-revealed');
-    }, 6400);
+    }, isMobileHero ? 4800 : 6400);
 
     setTimeout(() => {
       const actions = document.querySelector('.hero-actions');
       const social = document.querySelector('.social-row');
       if (actions) actions.classList.add('is-revealed');
       if (social) social.classList.add('is-revealed');
-    }, 6700);
+    }, isMobileHero ? 5100 : 6700);
 
     // 4. Foto background hotel PALING TERAKHIR (8.3s)
     setTimeout(() => {

@@ -4017,8 +4017,33 @@ body.dark-mode .footer-watermark-text {
     padding: 0 20px;
   }
 
+  body.menu-open .header-inner {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  body.menu-open .brand-title {
+    font-size: 21px !important;
+  }
+
   body.menu-open .brand-expand {
-    display: none !important;
+    min-width: 0;
+    margin-left: 8px !important;
+  }
+
+  body.menu-open .brand-sep {
+    margin-right: 10px !important;
+    margin-left: 10px !important;
+  }
+
+  body.menu-open .brand-sub span:first-child {
+    font-size: 9px !important;
+    letter-spacing: 0.1em !important;
+  }
+
+  body.menu-open .brand-sub span:last-child {
+    font-size: 7.5px !important;
+    letter-spacing: 0.1em !important;
   }
 
   .hero-stage {
@@ -4039,6 +4064,18 @@ body.dark-mode .footer-watermark-text {
     max-width: 100%;
     height: 100%;
     object-position: center bottom;
+  }
+
+  .hero-art-layer::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    height: 32%;
+    background: linear-gradient(to bottom, transparent, var(--bg-main) 92%);
+    pointer-events: none;
   }
 
   .hero-inner {

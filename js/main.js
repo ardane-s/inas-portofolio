@@ -441,13 +441,67 @@ document.addEventListener('DOMContentLoaded', () => {
   // ── 5. Navbar Solid on Scroll & Parallax Effect ───────────────
   let rafId = null;
   const cinematicSections = [
-    document.querySelector('.skills-subpart'),
-    document.querySelector('.experience-subpart'),
-    document.querySelector('.portfolio-section'),
-    document.querySelector('.achievements-section'),
-    document.querySelector('.journal-section'),
-    document.querySelector('.contact-section')
-  ].filter(Boolean);
+    {
+      section: document.querySelector('.about-section'),
+      content: document.querySelector('.about-grid'),
+      flowTop: null
+    },
+    {
+      section: document.querySelector('.skills-subpart'),
+      content: document.querySelector('.skills-stage'),
+      flowTop: null
+    },
+    {
+      section: document.querySelector('.experience-subpart'),
+      content: document.querySelector('.exp-timeline'),
+      flowTop: null
+    },
+    {
+      section: document.querySelector('.portfolio-section'),
+      content: document.querySelector('.portfolio-stage'),
+      flowTop: null
+    },
+    {
+      section: document.querySelector('.achievements-section'),
+      content: document.querySelector('.achievements-stage'),
+      flowTop: null
+    },
+    {
+      section: document.querySelector('.journal-section'),
+      content: document.querySelector('.journal-grid'),
+      flowTop: null
+    },
+    {
+      section: document.querySelector('.contact-section'),
+      content: document.querySelector('.contact-hero-card'),
+      flowTop: null
+    }
+  ].filter(({ section, content }) => section && content);
+
+  function getContentShift(content) {
+    return Number.parseFloat(getComputedStyle(content).getPropertyValue('--section-content-shift')) || 0;
+  }
+
+  function getContentTranslation(content) {
+    const styles = getComputedStyle(content);
+    const progress = Number.parseFloat(styles.getPropertyValue('--section-content-progress')) || 0;
+    const shift = getContentShift(content);
+    const centerOffset = Number.parseFloat(
+      styles.getPropertyValue('--section-content-center-offset')
+    ) || 0;
+    return (1 - progress) * shift + progress * centerOffset;
+  }
+
+  function refreshCinematicPositions() {
+    cinematicSections.forEach(entry => {
+      const { content } = entry;
+      const wasPinned = content.classList.contains('is-scroll-pinned');
+      if (wasPinned) content.classList.remove('is-scroll-pinned');
+      const rect = content.getBoundingClientRect();
+      entry.flowTop = rect.top + window.scrollY - getContentTranslation(content);
+      if (wasPinned) content.classList.add('is-scroll-pinned');
+    });
+  }
 
   function handleScroll() {
     const scrollY = window.scrollY;
@@ -482,13 +536,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const aboutImg = document.querySelector('.about-image-card img');
     if (aboutSection && aboutImg) {
       const rect = aboutSection.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-      const progress = Math.min(1, Math.max(0, -rect.top / (windowHeight * 0.7)));
-      const titleFade = Math.min(1, progress / 0.65);
-      const contentFade = Math.min(1, Math.max(0, (progress - 0.25) / 0.45));
-      aboutSection.style.setProperty('--about-intro-progress', titleFade.toFixed(3));
-      aboutSection.style.setProperty('--about-content-progress', contentFade.toFixed(3));
-
       if (rect.top < windowHeight && rect.bottom > 0) {
         const progress = (windowHeight - rect.top) / (windowHeight + rect.height);
         const translateY = (progress - 0.5) * 55;
@@ -496,25 +543,38 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    cinematicSections.forEach(section => {
-      const content = section.querySelector('.scroll-cinematic-content:not(.exp-divider)');
-      if (!content) return;
+    cinematicSections.forEach(entry => {
+      const { section, content } = entry;
+      const pinContainer = content.parentElement;
+      const stickyTop = Math.max(64, windowHeight * 0.09);
+      if (entry.flowTop === null) {
+        const wasPinned = content.classList.contains('is-scroll-pinned');
+        if (wasPinned) content.classList.remove('is-scroll-pinned');
+        entry.flowTop = content.getBoundingClientRect().top + scrollY - getContentTranslation(content);
+        if (wasPinned) content.classList.add('is-scroll-pinned');
+      }
 
-      const currentContentProgress = Number(section.style.getPropertyValue('--section-content-progress')) || 0;
-      const contentShift = Number.parseFloat(getComputedStyle(content).getPropertyValue('--section-content-shift')) || 0;
-      const contentTop = content.getBoundingClientRect().top - (1 - currentContentProgress) * contentShift;
-      const introOpacity = Math.min(
-        1,
-        Math.max(0, (contentTop - windowHeight * 0.45) / (windowHeight * 0.3))
-      );
-      const contentProgress = Math.min(
-        1,
-        Math.max(0, (windowHeight * 0.25 - contentTop) / (windowHeight * 0.2))
-      );
+      const canPin = content.offsetHeight <= windowHeight - stickyTop * 2;
+      content.classList.toggle('is-scroll-pinned', canPin);
+      content.style.setProperty('--cinematic-sticky-top', `${stickyTop.toFixed(1)}px`);
+      pinContainer.classList.toggle('has-cinematic-pin', canPin);
+
+      const contentHeight = content.offsetHeight;
+      const centerOffset = canPin
+        ? Math.max(0, (windowHeight - contentHeight) / 2 - stickyTop)
+        : Math.max(0, (windowHeight - contentHeight) / 2 - windowHeight * 0.12);
+      const contentTop = entry.flowTop - scrollY;
+      const introFadeStart = windowHeight * 0.82;
+      const introFadeEnd = windowHeight * 0.58;
+      const contentFadeStart = windowHeight * 0.45;
+      const contentFadeEnd = canPin ? Math.max(0, stickyTop - 8) : Math.max(0, windowHeight * 0.12 - 6);
+      const introOpacity = Math.min(1, Math.max(0, (contentTop - introFadeEnd) / (introFadeStart - introFadeEnd)));
+      const contentProgress = Math.min(1, Math.max(0, (contentFadeStart - contentTop) / (contentFadeStart - contentFadeEnd)));
 
       section.style.setProperty('--section-intro-opacity', introOpacity.toFixed(3));
       section.style.setProperty('--section-content-progress', contentProgress.toFixed(3));
-      const introOffset = Math.min(22, Math.max(0, (contentTop / windowHeight - 0.45) / 0.3 * 22));
+      section.style.setProperty('--section-content-center-offset', `${centerOffset.toFixed(1)}px`);
+      const introOffset = (1 - introOpacity) * 22;
       section.style.setProperty('--section-intro-offset', `${introOffset.toFixed(1)}px`);
     });
 
@@ -543,6 +603,27 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { passive: true });
 
   handleScroll();
+
+  window.addEventListener('resize', () => {
+    cinematicSections.forEach(entry => {
+      entry.content.classList.remove('is-scroll-pinned');
+      entry.flowTop = null;
+    });
+    handleScroll();
+  }, { passive: true });
+
+  if ('ResizeObserver' in window) {
+    let resizeObserverFrame = null;
+    const cinematicResizeObserver = new ResizeObserver(() => {
+      if (resizeObserverFrame) return;
+      resizeObserverFrame = requestAnimationFrame(() => {
+        resizeObserverFrame = null;
+        refreshCinematicPositions();
+        handleScroll();
+      });
+    });
+    cinematicSections.forEach(({ section }) => cinematicResizeObserver.observe(section));
+  }
 
   // ── 6. Fullscreen Hamburger Menu Toggle ───────────────────────
   let isMenuOpen = false;

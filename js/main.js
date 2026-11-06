@@ -86,6 +86,8 @@ document.addEventListener('DOMContentLoaded', () => {
       award_discipline_desc: "Recognized for discipline as a student in 2025.",
       contact_form_title: "Reach Out to Me",
       contact_form_sub: "For banquet service, event work and hospitality opportunities, please get in touch.",
+      contact_intro_eyebrow: "06 / CONTACT",
+      contact_intro_title: "Let's connect.",
       journal_headline: "Selected Service Experience.",
       journal_subtext: "A closer look at selected service settings and the responsibilities involved in each role.",
       jnl_card1_title: "Banquet service at scale",
@@ -176,6 +178,8 @@ document.addEventListener('DOMContentLoaded', () => {
       award_discipline_desc: "Menerima penghargaan atas kedisiplinan sebagai siswa pada 2025.",
       contact_form_title: "Hubungi Saya",
       contact_form_sub: "Untuk layanan banquet, acara, dan peluang kerja di bidang perhotelan, silakan hubungi saya.",
+      contact_intro_eyebrow: "06 / KONTAK",
+      contact_intro_title: "Mari terhubung.",
       journal_headline: "Pilihan Pengalaman Layanan.",
       journal_subtext: "Gambaran singkat tentang beberapa lingkungan layanan dan tanggung jawab dalam setiap peran.",
       jnl_card1_title: "Layanan banquet berskala besar",
@@ -311,6 +315,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (mist) mist.classList.add('is-revealed');
       if (vignette) vignette.classList.add('is-revealed');
       greetingRotationEnabled = true;
+      window.dispatchEvent(new Event('inas:greeting-start'));
     }, 7600);
 
     setTimeout(() => {
@@ -358,6 +363,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (e && e.type === 'keydown' && e.key !== 'Escape' && e.key !== ' ') return;
       introSkipped = true;
       greetingRotationEnabled = true;
+      window.dispatchEvent(new Event('inas:greeting-start'));
       const greeting = document.getElementById('hero-greeting-text');
       if (greeting) {
         greeting.textContent = 'Om Swastyastu, tityang';
@@ -434,9 +440,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ── 5. Navbar Solid on Scroll & Parallax Effect ───────────────
   let rafId = null;
+  const cinematicSections = [
+    document.querySelector('.skills-subpart'),
+    document.querySelector('.experience-subpart'),
+    document.querySelector('.portfolio-section'),
+    document.querySelector('.achievements-section'),
+    document.querySelector('.journal-section'),
+    document.querySelector('.contact-section')
+  ].filter(Boolean);
 
   function handleScroll() {
     const scrollY = window.scrollY;
+    const windowHeight = window.innerHeight;
 
     // Navbar state
     if (scrollY > 50) {
@@ -480,6 +495,21 @@ document.addEventListener('DOMContentLoaded', () => {
         aboutImg.style.transform = `scale(1.12) translateY(${translateY.toFixed(1)}px)`;
       }
     }
+
+    cinematicSections.forEach(section => {
+      const rect = section.getBoundingClientRect();
+      const progress = Math.min(1, Math.max(0, (windowHeight * 0.9 - rect.top) / (windowHeight * 1.35)));
+      const introOpacity = Math.min(
+        1,
+        Math.max(0, progress / 0.2),
+        Math.max(0, (0.72 - progress) / 0.2)
+      );
+      const contentProgress = Math.min(1, Math.max(0, (progress - 0.72) / 0.26));
+
+      section.style.setProperty('--section-intro-opacity', introOpacity.toFixed(3));
+      section.style.setProperty('--section-content-progress', contentProgress.toFixed(3));
+      section.style.setProperty('--section-intro-offset', `${((1 - progress) * 22).toFixed(1)}px`);
+    });
 
     // Parallax on Experience Photos
     const expPhotos = document.querySelectorAll('.exp-photo-card img');
@@ -648,22 +678,38 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     let greetingIndex = 0;
-    const intervalMs = 3400; // 3.4 seconds per greeting
-    const fadeDurationMs = 850; // Smooth 0.85s cinematic blur/fade
+    const intervalMs = 3400;
+    const fadeDurationMs = 850;
 
-    setInterval(() => {
+    greetingEl.style.setProperty('--greeting-cycle-duration', `${intervalMs + fadeDurationMs}ms`);
+
+    const scheduleGreeting = () => {
       if (!greetingRotationEnabled) return;
+
       greetingEl.classList.remove('fade-in');
-      greetingEl.classList.add('fade-out');
+      greetingEl.classList.add('is-timing');
 
       setTimeout(() => {
-        greetingIndex = (greetingIndex + 1) % greetings.length;
-        greetingEl.textContent = greetings[greetingIndex].text;
-        greetingEl.setAttribute('lang', greetings[greetingIndex].lang);
-        greetingEl.classList.remove('fade-out');
-        greetingEl.classList.add('fade-in');
-      }, fadeDurationMs);
-    }, intervalMs);
+        greetingEl.classList.remove('is-timing');
+        greetingEl.classList.add('fade-out');
+
+        setTimeout(() => {
+          greetingIndex = (greetingIndex + 1) % greetings.length;
+          greetingEl.textContent = greetings[greetingIndex].text;
+          greetingEl.setAttribute('lang', greetings[greetingIndex].lang);
+          greetingEl.classList.remove('fade-out');
+          greetingEl.classList.add('fade-in');
+
+          requestAnimationFrame(() => {
+            greetingEl.classList.remove('fade-in');
+            scheduleGreeting();
+          });
+        }, fadeDurationMs);
+      }, intervalMs);
+    };
+
+    window.addEventListener('inas:greeting-start', scheduleGreeting, { once: true });
+    if (greetingRotationEnabled) scheduleGreeting();
   }
 
   // ── 9. Smooth Anchor Scrolling ────────────────────────────────

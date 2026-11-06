@@ -1472,6 +1472,12 @@ body.dark-mode .btn-cv:hover svg {
 }
 
 @media (max-width: 600px) {
+  .menu-nav-anchor {
+    gap: 12px;
+    padding: 10px 0;
+    font-size: clamp(30px, 9vw, 38px);
+  }
+
   .hero-actions {
     flex-direction: column;
     align-items: stretch;

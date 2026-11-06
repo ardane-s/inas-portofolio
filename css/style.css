@@ -47,6 +47,7 @@
 
   /* Layout Widths */
   --content-max-width: 1360px;
+  --page-side-padding: 48px;
 }
 /* Dark Mode Color System (Nocturnal Emerald Sanctuary) */
 body.dark-mode {
@@ -3859,5 +3860,370 @@ body.dark-mode .footer-watermark-text {
   }
   .footer-panorama-wrap {
     height: 180px;
+  }
+}
+
+/* ============================================================
+   MOBILE LAYOUT
+============================================================ */
+@media (max-width: 992px) {
+  .hero-stage {
+    display: block;
+  }
+
+  .hero-art-layer {
+    position: absolute;
+    inset: 0 0 0 auto;
+    width: 58%;
+    height: 100%;
+  }
+
+  .hero-inner {
+    display: flex;
+    width: 100%;
+  }
+
+  .hero-content-left {
+    width: 58%;
+    max-width: 650px;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --page-side-padding: 24px;
+  }
+
+  .about-section {
+    padding: 76px 0 68px;
+  }
+
+  .about-inner {
+    padding: 0 24px;
+  }
+
+  .about-headline {
+    font-size: clamp(36px, 8vw, 52px);
+    margin-bottom: 36px;
+  }
+
+  .skills-subpart,
+  .experience-subpart {
+    padding: 68px 0;
+  }
+
+  .skills-inner,
+  .exp-inner {
+    padding: 0 24px;
+  }
+
+  .skills-header-row {
+    margin-bottom: 30px;
+  }
+
+  .skill-card {
+    padding: 26px 24px 24px;
+  }
+
+  .portfolio-section,
+  .journal-section {
+    padding: 72px 0 64px;
+  }
+
+  .portfolio-inner,
+  .journal-inner,
+  .achievements-inner,
+  .contact-inner,
+  .footer-inner {
+    padding-right: var(--page-side-padding);
+    padding-left: var(--page-side-padding);
+  }
+
+  .portfolio-header,
+  .journal-header,
+  .achievements-header {
+    margin-bottom: 30px;
+  }
+
+  .portfolio-filters,
+  .achievements-filters {
+    gap: 8px;
+    margin-bottom: 28px;
+  }
+
+  .pf-btn,
+  .achieve-filter-btn {
+    min-height: 40px;
+    padding: 8px 14px;
+  }
+
+  .portfolio-grid,
+  .journal-grid,
+  .achievements-grid {
+    gap: 18px;
+  }
+
+  .achievements-section {
+    padding: 76px 0 68px;
+  }
+
+  .contact-section {
+    padding: 72px 0 76px;
+  }
+
+  .contact-hero-card {
+    border-radius: 20px;
+  }
+
+  .contact-grid {
+    padding: 24px 18px;
+    gap: 32px;
+  }
+
+  .contact-form-content {
+    padding: 26px 22px 24px;
+  }
+
+  .contact-display-title {
+    font-size: clamp(36px, 9vw, 54px);
+    margin-bottom: 22px;
+  }
+
+  .contact-detail-row {
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .contact-detail-label {
+    min-width: 100px;
+  }
+
+  .contact-detail-val {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .site-footer {
+    padding-top: 72px;
+  }
+
+  .footer-top-grid {
+    margin-bottom: 40px;
+  }
+}
+
+@media (max-width: 600px) {
+  .header-inner {
+    padding: 0 20px;
+  }
+
+  body.menu-open .brand-expand {
+    display: none !important;
+  }
+
+  .hero-stage {
+    min-height: max(800px, 100svh);
+    overflow: hidden;
+    padding-top: 0;
+  }
+
+  .hero-art-layer {
+    inset: auto 0 0;
+    width: 100%;
+    height: 36%;
+    justify-content: center;
+  }
+
+  .hero-art-image {
+    width: auto;
+    max-width: 100%;
+    height: 100%;
+    object-position: center bottom;
+  }
+
+  .hero-inner {
+    display: block;
+    padding: 116px 22px 320px;
+  }
+
+  .hero-content-left {
+    width: 100%;
+    max-width: 520px;
+  }
+
+  .hero-greeting {
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+
+  .hero-name {
+    font-size: clamp(38px, 10.5vw, 48px);
+    line-height: 1.08;
+    margin-bottom: 12px;
+  }
+
+  .hero-profession {
+    font-size: clamp(17px, 5vw, 20px);
+    margin-bottom: 18px;
+  }
+
+  .hero-bio {
+    max-width: 440px;
+    font-size: 14px;
+    line-height: 1.65;
+    margin-bottom: 22px;
+  }
+
+  .hero-actions {
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+
+  .btn-explore,
+  .btn-cv {
+    min-height: 48px;
+    width: 100%;
+  }
+
+  .hero-mist-backdrop {
+    background: linear-gradient(
+      to bottom,
+      rgba(244, 245, 239, 1) 0%,
+      rgba(244, 245, 239, 0.98) 42%,
+      rgba(244, 245, 239, 0.82) 54%,
+      rgba(244, 245, 239, 0.28) 72%,
+      rgba(244, 245, 239, 0) 88%
+    );
+  }
+
+  body.dark-mode .hero-mist-backdrop {
+    background: linear-gradient(
+      to bottom,
+      rgba(14, 22, 19, 1) 0%,
+      rgba(14, 22, 19, 0.98) 42%,
+      rgba(14, 22, 19, 0.82) 54%,
+      rgba(14, 22, 19, 0.28) 72%,
+      rgba(14, 22, 19, 0) 88%
+    );
+  }
+
+  .grid-line-v:not(.v1):not(.v5),
+  .crosshair-mark {
+    display: none;
+  }
+
+  .about-inner,
+  .skills-inner,
+  .exp-inner {
+    padding-right: 22px;
+    padding-left: 22px;
+  }
+
+  .about-headline {
+    font-size: clamp(34px, 9vw, 44px);
+    line-height: 1.1;
+    margin-bottom: 30px;
+  }
+
+  .about-image-card {
+    aspect-ratio: 4 / 3;
+  }
+
+  .about-meta-row {
+    gap: 6px;
+  }
+
+  .skills-subpart,
+  .experience-subpart {
+    padding: 60px 0;
+  }
+
+  .skills-headline {
+    font-size: clamp(30px, 8vw, 40px);
+  }
+
+  .exp-item {
+    gap: 10px;
+  }
+
+  .portfolio-inner,
+  .journal-inner,
+  .achievements-inner,
+  .contact-inner,
+  .footer-inner {
+    padding-right: var(--page-side-padding);
+    padding-left: var(--page-side-padding);
+  }
+
+  .portfolio-section,
+  .journal-section,
+  .achievements-section {
+    padding-top: 64px;
+    padding-bottom: 56px;
+  }
+
+  .portfolio-headline,
+  .journal-headline {
+    font-size: clamp(30px, 8vw, 40px);
+  }
+
+  .portfolio-filters,
+  .achievements-filters {
+    margin-bottom: 24px;
+  }
+
+  .contact-section {
+    padding: 60px 0 64px;
+  }
+
+  .contact-grid {
+    padding: 18px 14px;
+    gap: 28px;
+  }
+
+  .contact-form-content {
+    padding: 22px 18px 20px;
+  }
+
+  .contact-form-heading {
+    font-size: 22px;
+  }
+
+  .contact-detail-row {
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .footer-top-grid {
+    gap: 28px;
+  }
+
+  .footer-panorama-wrap {
+    height: 150px;
+    border-radius: 14px 14px 0 0;
+  }
+}
+
+@media (max-width: 380px) {
+  :root {
+    --page-side-padding: 18px;
+  }
+
+  .hero-inner {
+    padding-right: 18px;
+    padding-left: 18px;
+  }
+
+  .hero-name {
+    font-size: 37px;
+  }
+
+  .hero-stage {
+    min-height: max(780px, 100svh);
+  }
+
+  .contact-grid {
+    padding-right: 10px;
+    padding-left: 10px;
   }
 }

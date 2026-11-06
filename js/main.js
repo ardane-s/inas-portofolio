@@ -146,6 +146,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const heroContent = document.querySelector('.hero-content-left');
   const hamburgerBtn = document.getElementById('hamburger-toggle');
   const menuOverlay = document.getElementById('menu-overlay');
+  const isMobileHero = window.matchMedia('(max-width: 600px)').matches;
+  let greetingRotationEnabled = !isMobileHero;
 
   // ── 2. Cinematic Booting Sequence ──────────────────────────────
   const bootStage = document.getElementById('cinematic-boot');
@@ -196,14 +198,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ── Deterministic Hero Reveal Sequence (Satu Persatu) ──
 
-    const isMobileHero = window.matchMedia('(max-width: 600px)').matches;
-
-    // On mobile, reveal the introduction before the portrait; keep the desktop sequence unchanged.
     setTimeout(() => {
       if (heroModel) heroModel.classList.add('is-revealed');
-    }, isMobileHero ? 6400 : 4200);
+      if (isMobileHero) {
+        const greeting = document.getElementById('hero-greeting-text');
+        if (greeting) {
+          greeting.textContent = 'OM SWASTYASTU';
+          greeting.setAttribute('lang', 'ban');
+          greeting.parentElement.classList.add('is-revealed', 'is-blessing');
+        }
+      }
+    }, 4200);
 
-    // The ambient mist appears before the portrait on mobile.
+    // Let the portrait and blessing settle before revealing the rest of the mobile hero.
     setTimeout(() => {
       const mist = document.querySelector('.hero-mist-backdrop');
       const vignette = document.querySelector('.hero-top-vignette');
@@ -211,20 +218,36 @@ document.addEventListener('DOMContentLoaded', () => {
       if (vignette) vignette.classList.add('is-revealed');
     }, isMobileHero ? 5700 : 5300);
 
-    // Navbar and hero copy reveal first on mobile (4.2s - 5.1s).
+    if (isMobileHero) {
+      setTimeout(() => {
+        const greeting = document.querySelector('.hero-greeting');
+        if (greeting) greeting.classList.add('is-settling');
+      }, 6600);
+
+      setTimeout(() => {
+        const greeting = document.getElementById('hero-greeting-text');
+        if (greeting) {
+          greeting.textContent = 'Om Swastyastu, tityang';
+          greeting.setAttribute('lang', 'ban');
+          greeting.parentElement.classList.remove('is-blessing', 'is-settling');
+        }
+        greetingRotationEnabled = true;
+      }, 7500);
+    }
+
     setTimeout(() => {
       if (header) header.classList.add('is-revealed');
       if (navBrandGroup) navBrandGroup.classList.add('is-revealed');
       const greeting = document.querySelector('.hero-greeting');
       if (greeting) greeting.classList.add('is-revealed');
-    }, isMobileHero ? 4200 : 5800);
+    }, isMobileHero ? 7500 : 5800);
 
     setTimeout(() => {
       const name = document.querySelector('.hero-name');
       const navLinks = document.querySelector('.nav-links-wrap');
       if (name) name.classList.add('is-revealed');
       if (navLinks) navLinks.classList.add('is-revealed');
-    }, isMobileHero ? 4500 : 6100);
+    }, isMobileHero ? 7800 : 6100);
 
     setTimeout(() => {
       const prof = document.querySelector('.hero-profession');
@@ -232,14 +255,14 @@ document.addEventListener('DOMContentLoaded', () => {
       if (prof) prof.classList.add('is-revealed');
       if (bio) bio.classList.add('is-revealed');
       if (hamburgerBtn) hamburgerBtn.classList.add('is-revealed');
-    }, isMobileHero ? 4800 : 6400);
+    }, isMobileHero ? 8100 : 6400);
 
     setTimeout(() => {
       const actions = document.querySelector('.hero-actions');
       const social = document.querySelector('.social-row');
       if (actions) actions.classList.add('is-revealed');
       if (social) social.classList.add('is-revealed');
-    }, isMobileHero ? 5100 : 6700);
+    }, isMobileHero ? 8400 : 6700);
 
     // 4. Foto background hotel PALING TERAKHIR (8.3s)
     setTimeout(() => {
@@ -358,6 +381,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (aboutSection && aboutImg) {
       const rect = aboutSection.getBoundingClientRect();
       const windowHeight = window.innerHeight;
+      const progress = Math.min(1, Math.max(0, -rect.top / (windowHeight * 0.7)));
+      const titleFade = Math.min(1, progress / 0.65);
+      const contentFade = Math.min(1, Math.max(0, (progress - 0.25) / 0.45));
+      aboutSection.style.setProperty('--about-intro-progress', titleFade.toFixed(3));
+      aboutSection.style.setProperty('--about-content-progress', contentFade.toFixed(3));
+
       if (rect.top < windowHeight && rect.bottom > 0) {
         const progress = (windowHeight - rect.top) / (windowHeight + rect.height);
         const translateY = (progress - 0.5) * 55;
@@ -536,6 +565,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const fadeDurationMs = 850; // Smooth 0.85s cinematic blur/fade
 
     setInterval(() => {
+      if (!greetingRotationEnabled) return;
       greetingEl.classList.remove('fade-in');
       greetingEl.classList.add('fade-out');
 

@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>INAS — I Nyoman Ari Suardana</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       RESET & VARIABLES
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --orange:      #E8470A;
+      --orange-dim:  #C23A08;
+      --cream:       #F5F0E8;
+      --white:       #FFFFFF;
+      --dark:        #0A0808;
+      --dark-menu:   rgba(8, 6, 6, 0.97);
+      --grid:        rgba(255,255,255,0.08);
+      --text-muted:  rgba(255,255,255,0.45);
+    }
+
+    html { overflow-x: hidden; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--dark);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ============================================================
+       INTRO LOADER
+    ============================================================ */
+    #loader {
+      position: fixed;
+      inset: 0;
+      background: var(--dark);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.7s ease, visibility 0.7s ease;
+    }
+
+    #loader.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .loader-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .loader-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(48px, 10vw, 120px);
+      letter-spacing: 0.08em;
+      color: var(--white);
+      opacity: 0;
+      animation: loaderNameIn 0.8s cubic-bezier(0.16,1,0.3,1) 0.3s forwards;
+    }
+
+    .loader-bar-wrap {
+      width: 200px;
+      height: 1px;
+      background: rgba(255,255,255,0.15);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .loader-bar {
+      position: absolute;
+      inset: 0;
+      background: var(--orange);
+      transform: scaleX(0);
+      transform-origin: left;
+      animation: loaderBar 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.5s forwards;
+    }
+
+    @keyframes loaderNameIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes loaderBar {
+      to { transform: scaleX(1); }
+    }
+
+    /* ============================================================
+       MAIN WRAPPER — fade in after loader
+    ============================================================ */
+    #main {
+      opacity: 0;
+      transition: opacity 0.9s ease;
+    }
+    #main.visible { opacity: 1; }
+
+    /* ============================================================
+       NAVBAR
+    ============================================================ */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 500;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 40px;
+      mix-blend-mode: normal;
+    }
+
+    .nav-logo {
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--white);
+      position: relative;
+    }
+
+    .nav-logo sup {
+      font-size: 9px;
+      font-weight: 400;
+      color: var(--orange);
+      vertical-align: super;
+    }
+
+    .nav-links-center {
+      display: flex;
+      gap: 48px;
+      list-style: none;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .nav-links-center a {
+      font-size: 13px;
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+
+    .nav-links-center a:hover { color: var(--white); }
+
+    /* Hamburger */
+    .hamburger {
+      width: 36px;
+      height: 26px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+      z-index: 600;
+      position: relative;
+    }
+
+    .hamburger span {
+      display: block;
+      height: 1.5px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: transform 0.4s cubic-bezier(0.16,1,0.3,1),
+                  opacity 0.3s ease,
+                  width 0.3s ease;
+      transform-origin: right;
+    }
+
+    .hamburger span:nth-child(2) { width: 70%; align-self: flex-end; }
+
+    .hamburger.open span:nth-child(1) { transform: rotate(-45deg) translateY(0px); transform-origin: center; margin-top: 12px; }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: rotate(45deg) translateY(0px); transform-origin: center; margin-top: -13px; }
+
+    /* ============================================================
+       FULLSCREEN MENU OVERLAY
+    ============================================================ */
+    #menu-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 400;
+      background: var(--dark-menu);
+      display: grid;
+      grid-template-columns: 1fr 60px 1fr;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.5s cubic-bezier(0.16,1,0.3,1),
+                  visibility 0.5s ease;
+      overflow: hidden;
+    }
+
+    #menu-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* Background ghost image in overlay */
+    .menu-bg-ghost {
+      position: absolute;
+      inset: 0;
+      background-image: url('');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.04;
+      filter: grayscale(1);
+    }
+
+    /* Menu left — nav items */
+    .menu-left {
+      padding: 100px 60px 60px 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-right: 1px solid rgba(255,255,255,0.08);
+      position: relative;
+      z-index: 1;
+    }
+
+    .menu-nav-item {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      overflow: hidden;
+    }
+
+    .menu-nav-item:first-child { border-top: 1px solid rgba(255,255,255,0.07); }
+
+    .menu-nav-link {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(48px, 7vw, 88px);
+      letter-spacing: 0.04em;
+      color: var(--white);
+      text-decoration: none;
+      display: block;
+      padding: 10px 0;
+      line-height: 1;
+      transition: color 0.25s ease;
+      transform: translateY(100%);
+      opacity: 0;
+    }
+
+    #menu-overlay.open .menu-nav-link {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .menu-nav-item:nth-child(1) .menu-nav-link { transition-delay: 0.05s; color: var(--orange); }
+    .menu-nav-item:nth-child(2) .menu-nav-link { transition-delay: 0.10s; }
+    .menu-nav-item:nth-child(3) .menu-nav-link { transition-delay: 0.15s; }
+    .menu-nav-item:nth-child(4) .menu-nav-link { transition-delay: 0.20s; }
+    .menu-nav-item:nth-child(5) .menu-nav-link { transition-delay: 0.25s; }
+
+    .menu-nav-link { transition: transform 0.6s cubic-bezier(0.16,1,0.3,1), opacity 0.6s ease, color 0.25s ease; }
+
+    .menu-nav-link:hover { color: var(--orange); }
+
+    /* Menu center — plus markers */
+    .menu-center {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 0;
+      border-right: 1px solid rgba(255,255,255,0.08);
+      position: relative;
+      z-index: 1;
+    }
+
+    .menu-plus {
+      font-size: 20px;
+      color: rgba(255,255,255,0.3);
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      width: 100%;
+      transition: color 0.2s;
+    }
+
+    .menu-plus:last-child { border-bottom: none; }
+    .menu-plus:hover { color: var(--orange); }
+
+    /* Menu right — contact info */
+    .menu-right {
+      padding: 100px 60px 60px 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .menu-contact-block {
+      margin-bottom: 48px;
+      transform: translateX(30px);
+      opacity: 0;
+      transition: transform 0.6s cubic-bezier(0.16,1,0.3,1), opacity 0.6s ease;
+    }
+
+    #menu-overlay.open .menu-contact-block { transform: translateX(0); opacity: 1; }
+    #menu-overlay.open .menu-contact-block:nth-child(1) { transition-delay: 0.15s; }
+    #menu-overlay.open .menu-contact-block:nth-child(2) { transition-delay: 0.22s; }
+    #menu-overlay.open .menu-contact-block:nth-child(3) { transition-delay: 0.29s; }
+
+    .menu-contact-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .menu-contact-value {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: 0.02em;
+    }
+
+    /* ============================================================
+       HERO
+    ============================================================ */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      background: var(--orange);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Grid overlay */
+    .grid-overlay {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+      background-size: 120px 120px;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Watermark text */
+    .hero-watermark {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(80px, 18vw, 240px);
+      letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.1);
+      white-space: nowrap;
+      pointer-events: none;
+      z-index: 1;
+      user-select: none;
+    }
+
+    /* Photo placeholder (center) */
+    .hero-photo {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: clamp(260px, 35vw, 520px);
+      height: 85%;
+      z-index: 2;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    .photo-placeholder {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to top, rgba(0,0,0,0.3) 0%, transparent 60%);
+      border-radius: 4px 4px 0 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .photo-placeholder-inner {
+      width: 80%;
+      height: 90%;
+      border: 1px dashed rgba(255,255,255,0.25);
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: rgba(255,255,255,0.4);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .photo-placeholder-inner svg {
+      width: 32px;
+      height: 32px;
+      opacity: 0.4;
+    }
+
+    /* Hero content left */
+    .hero-content-left {
+      position: absolute;
+      left: 40px;
+      top: 50%;
+      transform: translateY(-30%);
+      z-index: 3;
+      max-width: 280px;
+    }
+
+    .hero-tagline {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.9);
+    }
+
+    /* Floating card — work sample */
+    .hero-card-work {
+      position: absolute;
+      right: 60px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 3;
+      background: var(--white);
+      border-radius: 8px;
+      overflow: hidden;
+      width: 180px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+
+    .hero-card-work-img {
+      width: 100%;
+      height: 140px;
+      background: linear-gradient(135deg, var(--orange) 0%, #FF8C42 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+    }
+
+    .hero-card-work-footer {
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--white);
+    }
+
+    .hero-card-work-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--dark);
+      letter-spacing: 0.04em;
+    }
+
+    .hero-card-work-tag {
+      font-size: 10px;
+      color: var(--orange);
+      font-weight: 600;
+    }
+
+    /* Floating card — let's talk */
+    .hero-card-talk {
+      position: absolute;
+      right: 60px;
+      bottom: 60px;
+      z-index: 3;
+      background: rgba(10, 8, 8, 0.85);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 220px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .hero-card-talk:hover { transform: translateY(-2px); }
+
+    .hero-card-talk-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--orange);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .hero-card-talk-text {}
+    .hero-card-talk-cta {
+      font-size: 10px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .hero-card-talk-name {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--white);
+    }
+    .hero-card-talk-role {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+    .hero-card-talk-arrow {
+      margin-left: auto;
+      width: 28px;
+      height: 28px;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      color: var(--white);
+    }
+
+    /* Hero year */
+    .hero-year {
+      position: absolute;
+      left: 40px;
+      bottom: 60px;
+      z-index: 3;
+      font-size: 12px;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 0.08em;
+    }
+
+    /* Hero big name bottom */
+    .hero-name-big {
+      position: absolute;
+      bottom: -16px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(72px, 14vw, 200px);
+      letter-spacing: 0.04em;
+      color: var(--white);
+      z-index: 3;
+      pointer-events: none;
+      line-height: 1;
+    }
+
+    /* ============================================================
+       CROSSHAIR DECORATIONS
+    ============================================================ */
+    .crosshair {
+      position: absolute;
+      z-index: 2;
+      width: 16px;
+      height: 16px;
+      pointer-events: none;
+    }
+
+    .crosshair::before,
+    .crosshair::after {
+      content: '';
+      position: absolute;
+      background: rgba(255,255,255,0.4);
+    }
+
+    .crosshair::before { width: 1px; height: 100%; left: 50%; top: 0; }
+    .crosshair::after  { height: 1px; width: 100%; top: 50%; left: 0; }
+
+    /* ============================================================
+       SCROLL INDICATOR
+    ============================================================ */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      animation: bounce 2s infinite;
+      color: rgba(255,255,255,0.5);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 768px) {
+      .nav-links-center { display: none; }
+      nav { padding: 20px 24px; }
+
+      .hero-content-left { left: 24px; max-width: 200px; }
+      .hero-year { left: 24px; bottom: 50px; }
+      .hero-card-work { right: 20px; width: 140px; }
+      .hero-card-work-img { height: 100px; }
+      .hero-card-talk { right: 20px; bottom: 50px; min-width: 180px; }
+
+      #menu-overlay {
+        grid-template-columns: 1fr;
+      }
+      .menu-center, .menu-right { display: none; }
+      .menu-left { padding: 100px 32px 60px; }
+    }
+
+    /* ============================================================
+       ENTRY ANIMATIONS for hero elements
+    ============================================================ */
+    .hero-watermark,
+    .hero-photo,
+    .hero-content-left,
+    .hero-card-work,
+    .hero-card-talk,
+    .hero-year,
+    .hero-name-big,
+    .crosshair,
+    .scroll-indicator {
+      opacity: 0;
+    }
+
+    .hero.loaded .hero-watermark {
+      animation: fadeUp 0.9s cubic-bezier(0.16,1,0.3,1) 0.1s forwards;
+    }
+    .hero.loaded .hero-photo {
+      animation: fadeUp 1s cubic-bezier(0.16,1,0.3,1) 0.2s forwards;
+    }
+    .hero.loaded .hero-content-left {
+      animation: fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.35s forwards;
+    }
+    .hero.loaded .hero-card-work {
+      animation: fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.45s forwards;
+    }
+    .hero.loaded .hero-card-talk {
+      animation: fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.55s forwards;
+    }
+    .hero.loaded .hero-year {
+      animation: fadeIn 0.8s ease 0.65s forwards;
+    }
+    .hero.loaded .hero-name-big {
+      animation: slideUp 1s cubic-bezier(0.16,1,0.3,1) 0.3s forwards;
+    }
+    .hero.loaded .crosshair {
+      animation: fadeIn 0.6s ease 0.7s forwards;
+    }
+    .hero.loaded .scroll-indicator {
+      animation: fadeIn 0.6s ease 1s forwards;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(60px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       INTRO LOADER
+  ============================================================ -->
+  <div id="loader">
+    <div class="loader-inner">
+      <div class="loader-name">INAS</div>
+      <div class="loader-bar-wrap">
+        <div class="loader-bar"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MAIN SITE
+  ============================================================ -->
+  <div id="main">
+
+    <!-- FULLSCREEN MENU OVERLAY -->
+    <div id="menu-overlay">
+      <div class="menu-bg-ghost"></div>
+
+      <!-- Left — big nav links -->
+      <div class="menu-left">
+        <nav class="menu-nav">
+          <div class="menu-nav-item">
+            <a href="#" class="menu-nav-link">HOME</a>
+          </div>
+          <div class="menu-nav-item">
+            <a href="#about" class="menu-nav-link" onclick="closeMenu()">ABOUT</a>
+          </div>
+          <div class="menu-nav-item">
+            <a href="#contact" class="menu-nav-link" onclick="closeMenu()">CONTACT</a>
+          </div>
+          <div class="menu-nav-item">
+            <a href="#services" class="menu-nav-link" onclick="closeMenu()">SERVICES</a>
+          </div>
+          <div class="menu-nav-item">
+            <a href="#experience" class="menu-nav-link" onclick="closeMenu()">WORK</a>
+          </div>
+        </nav>
+      </div>
+
+      <!-- Center — plus decorators (match nav count) -->
+      <div class="menu-center">
+        <div class="menu-plus">+</div>
+        <div class="menu-plus">+</div>
+        <div class="menu-plus">+</div>
+        <div class="menu-plus">+</div>
+        <div class="menu-plus">+</div>
+      </div>
+
+      <!-- Right — contact info -->
+      <div class="menu-right">
+        <div class="menu-contact-block">
+          <div class="menu-contact-label">Contact Phone</div>
+          <div class="menu-contact-value">(+62) 812 XXX XXXX</div>
+        </div>
+        <div class="menu-contact-block">
+          <div class="menu-contact-label">Contact Mail</div>
+          <div class="menu-contact-value">komangari2910<br>@gmail.com</div>
+        </div>
+        <div class="menu-contact-block">
+          <div class="menu-contact-label">Availability</div>
+          <div class="menu-contact-value" style="font-size:15px;line-height:1.6">
+            Open to Opportunities<br>
+            <span style="font-weight:400;font-size:13px;color:rgba(255,255,255,0.5)">Monday – Friday · 09:00 – 21:00</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav id="navbar">
+      <div class="nav-logo">INAS<sup>®</sup></div>
+      <ul class="nav-links-center">
+        <li><a href="#">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Service</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="hero">
+      <!-- Grid -->
+      <div class="grid-overlay"></div>
+
+      <!-- Crosshair decorations -->
+      <div class="crosshair" style="top: 30%; left: 30%;"></div>
+      <div class="crosshair" style="top: 60%; left: 68%;"></div>
+      <div class="crosshair" style="top: 20%; right: 30%;"></div>
+
+      <!-- Watermark -->
+      <div class="hero-watermark">NYOMAN</div>
+
+      <!-- Photo area -->
+      <div class="hero-photo">
+        <div class="photo-placeholder">
+          <div class="photo-placeholder-inner">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+              <circle cx="12" cy="8" r="4"/>
+              <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+            </svg>
+            Photo
+          </div>
+        </div>
+      </div>
+
+      <!-- Left tagline -->
+      <div class="hero-content-left">
+        <p class="hero-tagline">
+          I DESIGN USER-CENTERED<br>
+          HOSPITALITY EXPERIENCES<br>
+          THAT ARE WARM, PRECISE<br>
+          AND MEMORABLE
+        </p>
+      </div>
+
+      <!-- Work card (top right) -->
+      <div class="hero-card-work">
+        <div class="hero-card-work-img">🍽️</div>
+        <div class="hero-card-work-footer">
+          <div>
+            <div class="hero-card-work-label">INAS</div>
+            <div class="hero-card-work-tag">/ Hospitality</div>
+          </div>
+          <div style="font-size:18px;color:var(--orange)">↗</div>
+        </div>
+      </div>
+
+      <!-- Let's Talk card (bottom right) -->
+      <a href="#contact" class="hero-card-talk" onclick="return false;">
+        <div class="hero-card-talk-avatar">🌿</div>
+        <div class="hero-card-talk-text">
+          <div class="hero-card-talk-cta">Let's Talk</div>
+          <div class="hero-card-talk-name">INAS</div>
+          <div class="hero-card-talk-role">F&B Professional</div>
+        </div>
+        <div class="hero-card-talk-arrow">↗</div>
+      </a>
+
+      <!-- Year -->
+      <div class="hero-year">©2026</div>
+
+      <!-- Big name bottom -->
+      <div class="hero-name-big">NYOMAN</div>
+
+      <!-- Scroll indicator -->
+      <div class="scroll-indicator">
+        <svg width="14" height="20" viewBox="0 0 14 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="1" width="12" height="18" rx="6" stroke="currentColor" stroke-width="1.2"/>
+          <circle cx="7" cy="6" r="2" fill="currentColor" opacity="0.7">
+            <animate attributeName="cy" values="6;12;6" dur="1.8s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.7;0.1;0.7" dur="1.8s" repeatCount="indefinite"/>
+          </circle>
+        </svg>
+        Scroll
+      </div>
+    </section>
+
+  </div><!-- /#main -->
+
+  <!-- ============================================================
+       SCRIPTS
+  ============================================================ -->
+  <script>
+    // ── LOADER ──────────────────────────────────────────────────
+    window.addEventListener('DOMContentLoaded', () => {
+      const loader = document.getElementById('loader');
+      const main   = document.getElementById('main');
+      const hero   = document.getElementById('hero');
+
+      // After 2s: hide loader → show main → trigger hero animations
+      setTimeout(() => {
+        loader.classList.add('hidden');
+        main.classList.add('visible');
+
+        // Small delay so opacity transition doesn't fight
+        setTimeout(() => {
+          hero.classList.add('loaded');
+        }, 100);
+      }, 2000);
+    });
+
+    // ── MENU TOGGLE ─────────────────────────────────────────────
+    const overlay    = document.getElementById('menu-overlay');
+    const hamburger  = document.getElementById('hamburger');
+    let   menuOpen   = false;
+
+    function toggleMenu() {
+      menuOpen = !menuOpen;
+      overlay.classList.toggle('open', menuOpen);
+      hamburger.classList.toggle('open', menuOpen);
+      document.body.style.overflow = menuOpen ? 'hidden' : '';
+    }
+
+    function closeMenu() {
+      menuOpen = false;
+      overlay.classList.remove('open');
+      hamburger.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    // Close on ESC
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && menuOpen) closeMenu();
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,1722 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>INAS — I Nyoman Ari Suardana | Personal Portfolio</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+
+  <!-- External Stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+  <!-- ============================================================
+       CINEMATIC PRELOADER / INTRO BOOT STAGE
+  ============================================================ -->
+  <div class="cinematic-boot-stage" id="cinematic-boot" aria-hidden="true">
+    <div class="boot-canvas">
+      <!-- Centered Flying Logo Element -->
+      <div class="boot-brand-wrap" id="boot-brand-wrap">
+        <span class="boot-brand-title">INAS</span>
+        <div class="boot-brand-expand" id="boot-brand-expand">
+          <span class="boot-brand-sep"></span>
+          <div class="boot-brand-sub">
+            <span class="boot-sub-name">I NYOMAN ARI SUARDANA</span>
+            <span class="boot-sub-role">PERSONAL PORTOFOLIO</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       SITE HEADER / FLOATING NAVBAR
+  ============================================================ -->
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+
+      <!-- Brand Logo (Expands on Hover) -->
+      <a href="#home" class="brand-group" aria-label="INAS — Back to top">
+        <span class="brand-title">INAS</span>
+        <div class="brand-expand">
+          <span class="brand-sep"></span>
+          <div class="brand-sub">
+            <span>I NYOMAN ARI SUARDANA</span>
+            <span>PERSONAL PORTOFOLIO</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+            <nav class="nav-links-wrap">
+        <a href="#about" class="nav-item" data-i18n="nav_about">About</a>
+        <a href="#experience" class="nav-item" data-i18n="nav_experience">Experience</a>
+        <a href="#portofolio" class="nav-item" data-i18n="nav_portfolio">Portofolio</a>
+        <a href="#achievements" class="nav-item" data-i18n="nav_achievements">Achievements</a>
+        <a href="#journal" class="nav-item" data-i18n="nav_journal">Journal</a>
+        <a href="#contact" class="nav-item connect-btn">
+          <span data-i18n="nav_connect">Let's connect</span> <span>&#8599;</span>
+        </a>
+      </nav>
+
+      <!-- Hamburger Menu Toggle (Becomes Close X When Open) -->
+      <button class="hamburger-btn" id="hamburger-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+
+    </div>
+  </header>
+
+  <!-- ============================================================
+       HERO STAGE (Full Viewport with Parallax & Architectural Grid)
+  ============================================================ -->
+  <main class="hero-stage" id="home">
+
+    <!-- Parallax Hotel Background -->
+    <div class="hero-hotel-bg"></div>
+
+    <!-- Top Vignette for Navbar Readability -->
+    <div class="hero-top-vignette"></div>
+
+    <!-- Multi-stop Mist Gradient Backdrop (Left Side Softening) -->
+    <div class="hero-mist-backdrop"></div>
+
+    <!-- Architectural Box Grid & Crosshairs (Difference Blend) -->
+    <div class="grid-container">
+      <!-- Horizontal Lines -->
+      <div class="grid-line-h top"></div>
+      <div class="grid-line-h mid"></div>
+      <div class="grid-line-h bottom"></div>
+
+      <!-- Vertical Lines (5 Columns) -->
+      <div class="grid-line-v v1"></div>
+      <div class="grid-line-v v2"></div>
+      <div class="grid-line-v v3"></div>
+      <div class="grid-line-v v4"></div>
+      <div class="grid-line-v v5"></div>
+
+      <!-- Crosshairs (+) Top Row -->
+      <div class="crosshair-mark mark-t1"></div>
+      <div class="crosshair-mark mark-t2"></div>
+      <div class="crosshair-mark mark-t3"></div>
+      <div class="crosshair-mark mark-t4"></div>
+      <div class="crosshair-mark mark-t5"></div>
+
+      <!-- Crosshairs (+) Mid Row -->
+      <div class="crosshair-mark mark-m1"></div>
+      <div class="crosshair-mark mark-m2"></div>
+      <div class="crosshair-mark mark-m3"></div>
+      <div class="crosshair-mark mark-m4"></div>
+      <div class="crosshair-mark mark-m5"></div>
+    </div>
+
+    <!-- Model Portrait Layer (Official Inas Portrait) -->
+    <div class="hero-art-layer">
+      <img src="assets/hero_model_inas.png" alt="I Nyoman Ari Suardana" class="hero-art-image" />
+    </div>
+
+    <!-- Centered Hero Content -->
+    <div class="hero-inner">
+      <section class="hero-content-left">
+        <p class="hero-greeting">
+          <span class="greeting-text" id="hero-greeting-text">Hello, I am</span>
+        </p>
+        <h1 class="hero-name">
+          <span class="name-line">I Nyoman</span> <span class="name-line">Ari Suardana</span>
+        </h1>
+        <h2 class="hero-profession" data-i18n="hero_role">Food &amp; Beverage Attendant</h2>
+
+        <p class="hero-bio" data-i18n="hero_bio">
+          My name is Ardan, a hospitality student with a background in technology.
+          I'm learning to bring care, curiosity and attention to every guest experience.
+        </p>
+
+        <!-- CTA Action Buttons -->
+        <div class="hero-actions">
+          <a href="#portofolio" class="btn-explore">
+            <span data-i18n="btn_explore">Explore Portofolio</span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="7" y1="17" x2="17" y2="7"></line>
+              <polyline points="7 7 17 7 17 17"></polyline>
+            </svg>
+          </a>
+          <a href="#cv" class="btn-cv">
+            <span data-i18n="btn_cv">Download CV</span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <polyline points="19 12 12 19 5 12"></polyline>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Social Icons Row -->
+        <div class="social-row">
+          <a href="https://instagram.com" target="_blank" rel="noreferrer" class="social-btn" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+            </svg>
+          </a>
+          <a href="https://facebook.com" target="_blank" rel="noreferrer" class="social-btn" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+            </svg>
+          </a>
+          <a href="https://twitter.com" target="_blank" rel="noreferrer" class="social-btn" aria-label="Twitter / X">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+            </svg>
+          </a>
+          <a href="https://linkedin.com" target="_blank" rel="noreferrer" class="social-btn" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+              <rect x="2" y="9" width="4" height="12"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+          </a>
+        </div>
+      </section>
+    </div>
+
+  </main>
+
+  <!-- ============================================================
+       HOSPITALITY SERVICE ICONS STRIP (13 Specialized Services)
+  ============================================================ -->
+  <div class="service-icons-bar">
+    <div class="service-icons-track">
+
+      <!-- Set 1 -->
+      <div class="service-icon-item">
+        <svg class="service-icon-svg" viewBox="0 0 32 32">
+          <path d="M7 6v6a2 2 0 0 0 2 2h0a2 2 0 0 0 2-2V6" />
+          <path d="M9 14v12" />
+          <path d="M9 6v6" />
+          <circle cx="16" cy="16" r="6" />
+          <path d="M23 6v10a2 2 0 0 1-2 2h0v8" />
+        </svg>
+        <span class="service-icon-label">Table Service</span>
+      </div>
+
+      <div class="service-icon-item">
+        <svg class="service-icon-svg" viewBox="0 0 32 32">
+          <circle cx="16" cy="9" r="1.5" />
+          <path d="M16 10.5v2" />
+          <path d="M6 22a10 10 0 0 1 20 0H6z" />
+          <path d="M4 22h24v1.5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V22z" />
+        </svg>
+        <span class="service-icon-label">Cloche</span>
+      </div>
+
+      <div class="service-icon-item">
+        <svg class="service-icon-svg" viewBox="0 0 32 32">
+          <path d="M7 14h14v7a4 4 0 0 1-4 4H11a4 4 0 0 1-4-4v-7z" />
+          <path d="M21 16h2a2.5 2.5 0 0 1 0 5h-2" />
+          <path d="M5 26h18" />
+          <path d="M10 8c0 2 2 2 2 4" />
+          <path d="M14 7c0 2 2 2 2 4" />
+          <path d="M18 8c0 2 2 2 2 4" />
+        </svg>
+        <span class="service-icon-label">Coffee</span>
+      </div>
+
+      <div class="service-icon-item">
+        <svg class="service-icon-svg" viewBox="0 0 32 32">
+          <path d="M9 16a7 7 0 0 0 14 0c0-4-3-6-7-6s-7 2-7 6z" />
+          <path d="M14 9h4" />
+          <circle cx="16" cy="8" r="1" />
+          <path d="M9 16c-3 0-4-2-4-4s2-3 4-2" />
+          <path d="M23 15c2.5 0 4 1.5 4 3.5S25.5 22 23 21" />
+          <path d="M11 23h10" />
+        </svg>
+        <span class="service-icon-label">Tea Service</span>
+      </div>
+
+      <div class="service-icon-item">
+        <svg class="service-icon-svg" viewBox="0 0 32 32">
+          <path d="M7 8h18l-9 10-9-10z" />
+          <path d="M16 18v8" />
+          <path d="M11 26h10" />
+          <path d="M19 6l-5 5" />
+          <circle cx="17" cy="8" r="1.5" />
+        </svg>
+        <span class="service-icon-label">Mixology</span>
+      </div>
+
+      <div class="service-icon-item">
+        <svg class="service-icon-svg" viewBox="0 0 32 32">
+          <path d="M11 7h10v6a5 5 0 0 1-10 0V7z" />
+          <path d="M16 18v8" />
+          <path d="M11 26h10" />
+        </svg>
+        <span class="service-icon-label">Wine</span>
+      </div>
+
+      <div class="service-icon-item">
+        <svg class="service-icon-svg" viewBox="0 0 32 32">
+          <path d="M9 14V8h2v6l2 4v8H7v-8l2-4z" />
+          <path d="M9 11h2" />
+          <path d="M18 10h4v5a2 2 0 0 1-4 0v-5z" />
+          <path d="M20 17v7" />
+          <path d="M17 24h6" />
+          <path d="M23 13h4v4a2 2 0 0 1-4 0v-4z" />
+          <path d="M25 19v5" />
+          <path d="M23 24h4" />
+        </svg>
+        <span class="service-icon-label">Champagne</span>
+      </div>
+
+      <div class="service-icon-item">
+        <svg class="service-icon-svg" viewBox="0 0 32 32">
+          <path d="M10 8h11l-2 16a2 2 0 0 1-2 2h-5a2 2 0 0 1-2-2L8 8h2z" />
+          <path d="M8 8l-2 3" />
+          <path d="M19 12h3a3 3 0 0 1 0 6h-3" />
+          <path d="M11 16c2 1 4 1 6 0" />
+        </svg>
+        <span class="service-icon-label">Water Service</span>
+      </div>
+
+      <div class="service-icon-item">
+        <svg class="service-icon-svg" viewBox="0 0 32 32">
+          <path d="M6 24L16 7l10 17H6z" />
+          <path d="M16 7v17" />
+          <path d="M11 24l5-9 5 9" />
+        </svg>
+        <span class="service-icon-label">Table Linen</span>
+      </div>
+
+      <div class="service-icon-item">
+        <svg class="service-icon-svg" viewBox="0 0 32 32">
+          <path d="M5 14h22v2H5z" />
+          <path d="M12 9a4 4 0 0 1 8 0" />
+          <circle cx="16" cy="7" r="1" />
+          <path d="M10 22c2-1 4-1 6-3l4 1" />
+          <path d="M16 16v3" />
+          <path d="M13 22v4" />
+          <path d="M17 22v4" />
+        </svg>
+        <span class="service-icon-label">Tray Service</span>
+      </div>
+
+      <div class="service-icon-item">
+        <svg class="service-icon-svg" viewBox="0 0 32 32">
+          <path d="M16 7v2" />
+          <circle cx="16" cy="6" r="1.5" />
+          <path d="M7 21a9 9 0 0 1 18 0H7z" />
+          <path d="M5 21h22v3H5z" />
+        </svg>
+        <span class="service-icon-label">Guest Care</span>
+      </div>
+
+      <div class="service-icon-item">
+        <svg class="service-icon-svg" viewBox="0 0 32 32">
+          <path d="M16 8v16" />
+          <path d="M16 8c-3-2-6-2-9-1v15c3-1 6-1 9 1 3-2 6-2 9-1V7c-3-1-6-1-9 1z" />
+          <path d="M10 12h3" />
+          <path d="M10 16h3" />
+          <path d="M19 12h3" />
+          <path d="M19 16h3" />
+        </svg>
+        <span class="service-icon-label">Menu</span>
+      </div>
+
+      <div class="service-icon-item">
+        <svg class="service-icon-svg" viewBox="0 0 32 32">
+          <path d="M6 19c1-4 4-7 10-7s9 3 10 7c-2 2-5 3-10 3s-8-1-10-3z" />
+          <path d="M12 12c-1 2-1 5 0 8" />
+          <path d="M20 12c1 2 1 5 0 8" />
+          <path d="M16 12v8" />
+        </svg>
+        <span class="service-icon-label">Bakery</span>
+      </div>
+
+      <!-- Set 2 (Duplicated for continuous seamless marquee) -->
+      <div class="service-icon-item">
+        <svg class="service-icon-svg" viewBox="0 0 32 32">
+          <path d="M7 6v6a2 2 0 0 0 2 2h0a2 2 0 0 0 2-2V6" />
+          <path d="M9 14v12" />
+          <path d="M9 6v6" />
+          <circle cx="16" cy="16" r="6" />
+          <path d="M23 6v10a2 2 0 0 1-2 2h0v8" />
+        </svg>
+        <span class="service-icon-label">Table Service</span>
+      </div>
+
+      <div class="service-icon-item">
+        <svg class="service-icon-svg" viewBox="0 0 32 32">
+          <circle cx="16" cy="9" r="1.5" />
+          <path d="M16 10.5v2" />
+          <path d="M6 22a10 10 0 0 1 20 0H6z" />
+          <path d="M4 22h24v1.5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V22z" />
+        </svg>
+        <span class="service-icon-label">Cloche</span>
+      </div>
+
+      <div class="service-icon-item">
+        <svg class="service-icon-svg" viewBox="0 0 32 32">
+          <path d="M7 14h14v7a4 4 0 0 1-4 4H11a4 4 0 0 1-4-4v-7z" />
+          <path d="M21 16h2a2.5 2.5 0 0 1 0 5h-2" />
+          <path d="M5 26h18" />
+          <path d="M10 8c0 2 2 2 2 4" />
+          <path d="M14 7c0 2 2 2 2 4" />
+          <path d="M18 8c0 2 2 2 2 4" />
+        </svg>
+        <span class="service-icon-label">Coffee</span>
+      </div>
+
+      <div class="service-icon-item">
+        <svg class="service-icon-svg" viewBox="0 0 32 32">
+          <path d="M9 16a7 7 0 0 0 14 0c0-4-3-6-7-6s-7 2-7 6z" />
+          <path d="M14 9h4" />
+          <circle cx="16" cy="8" r="1" />
+          <path d="M9 16c-3 0-4-2-4-4s2-3 4-2" />
+          <path d="M23 15c2.5 0 4 1.5 4 3.5S25.5 22 23 21" />
+          <path d="M11 23h10" />
+        </svg>
+        <span class="service-icon-label">Tea Service</span>
+      </div>
+
+      <div class="service-icon-item">
+        <svg class="service-icon-svg" viewBox="0 0 32 32">
+          <path d="M7 8h18l-9 10-9-10z" />
+          <path d="M16 18v8" />
+          <path d="M11 26h10" />
+          <path d="M19 6l-5 5" />
+          <circle cx="17" cy="8" r="1.5" />
+        </svg>
+        <span class="service-icon-label">Mixology</span>
+      </div>
+
+      <div class="service-icon-item">
+        <svg class="service-icon-svg" viewBox="0 0 32 32">
+          <path d="M11 7h10v6a5 5 0 0 1-10 0V7z" />
+          <path d="M16 18v8" />
+          <path d="M11 26h10" />
+        </svg>
+        <span class="service-icon-label">Wine</span>
+      </div>
+
+      <div class="service-icon-item">
+        <svg class="service-icon-svg" viewBox="0 0 32 32">
+          <path d="M9 14V8h2v6l2 4v8H7v-8l2-4z" />
+          <path d="M9 11h2" />
+          <path d="M18 10h4v5a2 2 0 0 1-4 0v-5z" />
+          <path d="M20 17v7" />
+          <path d="M17 24h6" />
+          <path d="M23 13h4v4a2 2 0 0 1-4 0v-4z" />
+          <path d="M25 19v5" />
+          <path d="M23 24h4" />
+        </svg>
+        <span class="service-icon-label">Champagne</span>
+      </div>
+
+      <div class="service-icon-item">
+        <svg class="service-icon-svg" viewBox="0 0 32 32">
+          <path d="M10 8h11l-2 16a2 2 0 0 1-2 2h-5a2 2 0 0 1-2-2L8 8h2z" />
+          <path d="M8 8l-2 3" />
+          <path d="M19 12h3a3 3 0 0 1 0 6h-3" />
+          <path d="M11 16c2 1 4 1 6 0" />
+        </svg>
+        <span class="service-icon-label">Water Service</span>
+      </div>
+
+      <div class="service-icon-item">
+        <svg class="service-icon-svg" viewBox="0 0 32 32">
+          <path d="M6 24L16 7l10 17H6z" />
+          <path d="M16 7v17" />
+          <path d="M11 24l5-9 5 9" />
+        </svg>
+        <span class="service-icon-label">Table Linen</span>
+      </div>
+
+      <div class="service-icon-item">
+        <svg class="service-icon-svg" viewBox="0 0 32 32">
+          <path d="M5 14h22v2H5z" />
+          <path d="M12 9a4 4 0 0 1 8 0" />
+          <circle cx="16" cy="7" r="1" />
+          <path d="M10 22c2-1 4-1 6-3l4 1" />
+          <path d="M16 16v3" />
+          <path d="M13 22v4" />
+          <path d="M17 22v4" />
+        </svg>
+        <span class="service-icon-label">Tray Service</span>
+      </div>
+
+      <div class="service-icon-item">
+        <svg class="service-icon-svg" viewBox="0 0 32 32">
+          <path d="M16 7v2" />
+          <circle cx="16" cy="6" r="1.5" />
+          <path d="M7 21a9 9 0 0 1 18 0H7z" />
+          <path d="M5 21h22v3H5z" />
+        </svg>
+        <span class="service-icon-label">Guest Care</span>
+      </div>
+
+      <div class="service-icon-item">
+        <svg class="service-icon-svg" viewBox="0 0 32 32">
+          <path d="M16 8v16" />
+          <path d="M16 8c-3-2-6-2-9-1v15c3-1 6-1 9 1 3-2 6-2 9-1V7c-3-1-6-1-9 1z" />
+          <path d="M10 12h3" />
+          <path d="M10 16h3" />
+          <path d="M19 12h3" />
+          <path d="M19 16h3" />
+        </svg>
+        <span class="service-icon-label">Menu</span>
+      </div>
+
+      <div class="service-icon-item">
+        <svg class="service-icon-svg" viewBox="0 0 32 32">
+          <path d="M6 19c1-4 4-7 10-7s9 3 10 7c-2 2-5 3-10 3s-8-1-10-3z" />
+          <path d="M12 12c-1 2-1 5 0 8" />
+          <path d="M20 12c1 2 1 5 0 8" />
+          <path d="M16 12v8" />
+        </svg>
+        <span class="service-icon-label">Bakery</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============================================================
+       ABOUT SECTION ("An Overview Personality")
+  ============================================================ -->
+  <section class="about-section" id="about">
+    <div class="about-inner">
+
+      <div class="about-header-wrap reveal-on-scroll">
+        <p class="about-eyebrow">About Me</p>
+        <h2 class="about-headline">An Overview Personality</h2>
+      </div>
+
+      <div class="about-grid">
+
+        <!-- Left Column: Visual Inspiration Card -->
+        <div class="about-image-col reveal-on-scroll reveal-delay-1">
+          <div class="about-image-card">
+            <img src="assets/hero_hotel_bg.jpg" alt="A sense of place — visual inspiration" />
+            <div class="about-image-tag">
+              <div class="about-image-tag-title">A sense of place.</div>
+              <div class="about-image-tag-sub">Visual Inspiration · Not a Workplace</div>
+            </div>
+          </div>
+          <p class="about-image-caption">Thoughtful spaces. Considered details. Genuine care.</p>
+        </div>
+
+        <!-- Right Column: Interactive Content -->
+        <div class="about-content-col reveal-on-scroll reveal-delay-2">
+
+          <!-- Subhead Row with Tab Pills -->
+          <div class="about-subhead-row">
+            <div class="about-circle-icon"></div>
+            <span class="about-subhead">Who I Am?</span>
+            <div class="about-pills">
+              <button class="about-pill active" data-tab="inas">INAS</button>
+              <button class="about-pill" data-tab="education">Education</button>
+              <button class="about-pill" data-tab="extra">Extra</button>
+            </div>
+          </div>
+
+          <div class="about-divider"></div>
+
+          <!-- Tab Panel: INAS (Default Active) -->
+          <div id="panel-inas">
+            <p class="about-bio">
+              Hello, I am Ardan, an aspiring Food &amp; Beverage Service professional with a passion for
+              creating memorable guest experiences through genuine hospitality, attention to detail, and
+              continuous learning.
+            </p>
+            <p class="about-bio">
+              Through every event, guest interaction, and service shift, I have continued to develop my
+              communication, teamwork, adaptability, and problem-solving skills.
+            </p>
+            <p class="about-bio">
+              Alongside my studies at Mediterranean Bali Ubud, I have gained hands-on experience in
+              banquet operations, hospitality events, and high-volume service environments. These
+              experiences have strengthened my ability to work under pressure, collaborate effectively,
+              and maintain consistent service standards.
+            </p>
+            <p class="about-bio">
+              I believe that exceptional hospitality goes beyond delivering service. It is about
+              professionalism, discipline, attention to detail, and a genuine commitment to making every
+              guest feel welcomed, valued, and remembered.
+            </p>
+          </div>
+
+          <!-- Tab Panel: Education -->
+          <div id="panel-education" style="display: none;">
+            <p class="about-bio">
+              Currently pursuing studies at <strong>Mediterranean Bali Ubud</strong>, specializing in
+              Hotel &amp; Restaurant Operations with an emphasis on Food &amp; Beverage Service.
+            </p>
+            <p class="about-bio">
+              My coursework balances intensive practical training in banquet setups, table service standards,
+              and beverage knowledge with hospitality management principles, guest communication, and
+              operational hygiene.
+            </p>
+            <p class="about-bio">
+              Hands-on practical shifts at high-caliber events have reinforced the importance of situational
+              awareness, calm coordination under pressure, and gracious hospitality in multi-cultural settings.
+            </p>
+          </div>
+
+          <!-- Tab Panel: Extra -->
+          <div id="panel-extra" style="display: none;">
+            <p class="about-bio">
+              Beyond the service floor, I bring a unique dual background in technology and digital workflows.
+              I believe modern hospitality thrives when human warmth is complemented by thoughtful digital tools
+              and efficient operational systems.
+            </p>
+            <p class="about-bio">
+              My personal interests include Balinese culture and temple arts, coffee brewing techniques,
+              photography, and language learning to connect meaningfully with global travelers visiting Bali.
+            </p>
+          </div>
+
+          <!-- Languages Metadata Row -->
+          <div class="about-meta-row">
+            <div class="about-meta-label">Languages</div>
+            <div>
+              <div class="about-meta-val">Professional English</div>
+              <div class="about-meta-val-sub">[Intermediate Level] &nbsp;·&nbsp; Balinese (Native) &nbsp;·&nbsp; Indonesian (Native)</div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       EXPERIENCE SECTION (Service & Skills + Career Journey)
+  ============================================================ -->
+  <section class="experience-section" id="experience">
+
+    <!-- SUB-BLOCK 1: SERVICE & SKILLS -->
+    <div class="skills-subpart">
+      <div class="skills-inner">
+
+        <!-- Skills Header Row -->
+        <div class="skills-header-row reveal-on-scroll">
+          <div class="skills-header-left">
+            <p class="skills-eyebrow" data-i18n="skills_eyebrow">Service &amp; Skills</p>
+            <h2 class="skills-headline" data-i18n="skills_headline">Care is in the details.</h2>
+          </div>
+          <div class="skills-header-right">
+            <p class="skills-subtext" data-i18n="skills_subtext">
+              A learning-focused skill map. Personalise these areas with the skills, training and service examples you can demonstrate.
+            </p>
+          </div>
+        </div>
+
+        <!-- 8 Skills Cards Grid (2 rows x 4 cols) -->
+        <div class="skills-grid">
+
+          <!-- === ROW 1: HARD SKILLS === -->
+
+          <!-- Card 1: Guest Communication (Hard) -->
+          <div class="skill-card reveal-on-scroll reveal-delay-1">
+            <div class="skill-row-label">Hard Skills</div>
+            <div class="skill-icon-wrap" aria-hidden="true">
+              <!-- Speech / Chat message icon -->
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                <line x1="8" y1="9" x2="16" y2="9"></line>
+                <line x1="8" y1="13" x2="13" y2="13"></line>
+              </svg>
+            </div>
+            <h3 class="skill-card-title">Guest communication</h3>
+            <p class="skill-card-desc">
+              Listening, clear explanations and a considered response to guest needs.
+            </p>
+            <div class="skill-card-action">
+              [Add a real service example]
+            </div>
+          </div>
+
+          <!-- Card 2: Front Office -->
+          <div class="skill-card reveal-on-scroll reveal-delay-2">
+            <div class="skill-icon-wrap" aria-hidden="true">
+              <!-- Concierge Desk Bell icon -->
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3v3"></path>
+                <path d="M18 17a6 6 0 0 0-12 0"></path>
+                <path d="M4 17h16"></path>
+                <path d="M3 20h18"></path>
+                <circle cx="12" cy="3" r="1"></circle>
+              </svg>
+            </div>
+            <h3 class="skill-card-title">Front office</h3>
+            <p class="skill-card-desc">
+              The welcome, the handover and the details that shape a first impression.
+            </p>
+            <div class="skill-card-action">
+              [Add practised tasks or systems]
+            </div>
+          </div>
+
+          <!-- Card 3: Food & Beverage -->
+          <div class="skill-card reveal-on-scroll reveal-delay-3">
+            <div class="skill-icon-wrap" aria-hidden="true">
+              <!-- Fork & Knife / Dining Service icon -->
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 2v20"></path>
+                <path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"></path>
+                <path d="M6 2v7"></path>
+                <path d="M3 2v7"></path>
+                <path d="M9 2v7"></path>
+                <path d="M3 9a3 3 0 0 0 6 0v0"></path>
+                <path d="M6 12v10"></path>
+              </svg>
+            </div>
+            <h3 class="skill-card-title">Food &amp; beverage</h3>
+            <p class="skill-card-desc">
+              Preparation, presentation and attentive service throughout a meal.
+            </p>
+            <div class="skill-card-action">
+              [Add service skills &amp; training]
+            </div>
+          </div>
+
+          <!-- Card 4: Team Coordination (Hard) — hover slides RIGHT -->
+          <div class="skill-card skill-card--hover-right reveal-on-scroll reveal-delay-4">
+            <div class="skill-icon-wrap" aria-hidden="true">
+              <!-- Team / Collaboration icon -->
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </div>
+            <h3 class="skill-card-title">Team coordination</h3>
+            <p class="skill-card-desc">
+              Clear briefings, shared responsibilities and care behind the scenes.
+            </p>
+            <div class="skill-card-action">
+              [Add a teamwork example]
+
+            </div>
+
+            <div class="skill-hover-arrow skill-hover-arrow--right" aria-hidden="true">&#8594;</div>
+
+          </div>
+
+
+
+        </div>
+
+
+
+        <!-- ROW 2: SOFT SKILLS -->
+
+        <div class="skills-grid skills-grid--soft">
+
+
+
+          <!-- Card 5: Guest Communication (Soft) -->
+
+          <div class="skill-card skill-card--soft reveal-on-scroll reveal-delay-1">
+
+            <div class="skill-row-label">Soft Skills</div>
+
+            <div class="skill-icon-wrap" aria-hidden="true">
+
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+
+              </svg>
+
+            </div>
+
+            <h3 class="skill-card-title">Guest communication</h3>
+
+            <p class="skill-card-desc">
+
+              Empathy, patience and warmth that make every guest feel genuinely welcome.
+
+            </p>
+
+            <div class="skill-card-action">
+
+              [Add a real service example]
+
+            </div>
+
+          </div>
+
+
+
+          <!-- Card 6: Front Office (Soft) -->
+
+          <div class="skill-card skill-card--soft reveal-on-scroll reveal-delay-2">
+
+            <div class="skill-icon-wrap" aria-hidden="true">
+
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+
+                <circle cx="12" cy="12" r="10"></circle>
+
+                <polyline points="12 6 12 12 16 14"></polyline>
+
+              </svg>
+
+            </div>
+
+            <h3 class="skill-card-title">Front office</h3>
+
+            <p class="skill-card-desc">
+
+              Composure under pressure, positive attitude and smooth problem resolution.
+
+            </p>
+
+            <div class="skill-card-action">
+
+              [Add practised tasks or systems]
+
+            </div>
+
+          </div>
+
+
+
+          <!-- Card 7: Food &amp; Beverage (Soft) -->
+
+          <div class="skill-card skill-card--soft reveal-on-scroll reveal-delay-3">
+
+            <div class="skill-icon-wrap" aria-hidden="true">
+
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+
+              </svg>
+
+            </div>
+
+            <h3 class="skill-card-title">Food &amp; beverage</h3>
+
+            <p class="skill-card-desc">
+
+              Mindfulness of dietary needs, table etiquette and guest satisfaction.
+
+            </p>
+
+            <div class="skill-card-action">
+
+              [Add service skills &amp; training]
+
+            </div>
+
+          </div>
+
+
+
+          <!-- Card 8: Team Coordination (Soft) &mdash; hover slides LEFT -->
+
+          <div class="skill-card skill-card--soft skill-card--hover-left reveal-on-scroll reveal-delay-4">
+
+            <div class="skill-icon-wrap" aria-hidden="true">
+
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+
+                <circle cx="9" cy="7" r="4"></circle>
+
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+
+              </svg>
+
+            </div>
+
+            <h3 class="skill-card-title">Team coordination</h3>
+
+            <p class="skill-card-desc">
+
+              Adaptability, active listening and collaborative spirit that keeps service seamless.
+
+            </p>
+
+            <div class="skill-card-action">
+
+              [Add a teamwork example]
+
+            </div>
+
+            <div class="skill-hover-arrow skill-hover-arrow--left" aria-hidden="true">&#8592;</div>
+
+          </div>
+
+
+
+        </div>
+
+
+
+        <!-- Skills Footer Disclaimer -->
+        <div class="skills-footer-note reveal-on-scroll">
+          LEARNING FOCUS &middot; EDITABLE AREAS, NOT VERIFIED QUALIFICATIONS
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SUB-BLOCK 2: PROFESSIONAL EXPERIENCE TIMELINE -->
+    <div class="experience-subpart" id="work-experience">
+      <div class="exp-inner">
+
+        <!-- Section Header -->
+        <div class="exp-header reveal-on-scroll">
+          <p class="exp-eyebrow" data-i18n="exp_eyebrow">01 / Professional Experience</p>
+          <h2 class="exp-headline" data-i18n="exp_headline">Where My Journey Takes Shape.</h2>
+          <p class="exp-subtext" data-i18n="exp_subtext">
+            The starting points of my practical hospitality experience. Details below are editable notes to complete in my own words.
+          </p>
+        </div>
+
+        <div class="exp-divider reveal-on-scroll"></div>
+
+        <!-- Timeline Items List -->
+        <div class="exp-timeline">
+
+          <!-- Timeline Item 1: BNDCC -->
+          <div class="exp-item is-expanded reveal-on-scroll">
+            <div class="exp-time-col">
+              <span class="exp-dot"></span>
+              <span class="exp-date">Start &middot; February 2026</span>
+            </div>
+            <div class="exp-body-col">
+              <div class="exp-header-row">
+                <div class="exp-header-titles">
+                  <h3 class="exp-employer">Bali Nusa Dua Convention Center (BNDCC)</h3>
+                  <div class="exp-role-title">Banquet Service Daily Worker (On-Call)</div>
+                  <div class="exp-role-badge">BNDCC &middot; Nusa Dua, Bali</div>
+                </div>
+                <button type="button" class="exp-toggle-btn" aria-label="Toggle details" aria-expanded="true">
+                  <span class="exp-toggle-icon">&minus;</span>
+                </button>
+              </div>
+              <div class="exp-notes-box">
+                <div class="exp-notes-content-grid">
+                  <div class="exp-notes-text-col">
+                    <div class="exp-notes-tag">EXPERIENCE NOTES &middot; EDITABLE DRAFT</div>
+                    <p class="exp-notes-story">
+                      [Add a short account of your banquet service experience at BNDCC.]
+                    </p>
+                    <div class="exp-notes-detail">
+                      <span class="detail-lead">Responsibilities &middot;</span>
+                      <span class="detail-content">[Draft prompts: service preparation, table setup, event support. Confirm your actual duties.]</span>
+                    </div>
+                    <div class="exp-notes-detail">
+                      <span class="detail-lead">Related skills &middot;</span>
+                      <span class="detail-content">[Add related skills you practised.]</span>
+                    </div>
+                  </div>
+                  <div class="exp-photo-col">
+                    <div class="exp-photo-card">
+                      <img src="assets/exp_bndcc_hall.jpg" alt="Bali Nusa Dua Convention Center" onerror="this.src='assets/hero_hotel_bg.jpg'" />
+                      <div class="exp-photo-tag">
+                        <span class="exp-photo-location">BNDCC &middot; Nusa Dua, Bali</span>
+                        <span class="exp-photo-title">PHOTO PLACEHOLDER &middot; REPLACE</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Timeline Item 2: Paradisus by Melia -->
+          <div class="exp-item is-expanded reveal-on-scroll">
+            <div class="exp-time-col">
+              <span class="exp-dot"></span>
+              <span class="exp-date">Start &middot; April 2025</span>
+            </div>
+            <div class="exp-body-col">
+              <div class="exp-header-row">
+                <div class="exp-header-titles">
+                  <h3 class="exp-employer">Paradisus by Melia</h3>
+                  <div class="exp-role-title">Banquet Service Daily Worker (On-Call)</div>
+                  <div class="exp-role-badge">IBSC &middot; Nusa Dua, Bali</div>
+                </div>
+                <button type="button" class="exp-toggle-btn" aria-label="Toggle details" aria-expanded="true">
+                  <span class="exp-toggle-icon">&minus;</span>
+                </button>
+              </div>
+              <div class="exp-notes-box">
+                <div class="exp-notes-content-grid">
+                  <div class="exp-notes-text-col">
+                    <div class="exp-notes-tag">EXPERIENCE NOTES &middot; EDITABLE DRAFT</div>
+                    <p class="exp-notes-story">
+                      [Add a short account of your experience at Paradisus by Melia.]
+                    </p>
+                    <div class="exp-notes-detail">
+                      <span class="detail-lead">Responsibilities &middot;</span>
+                      <span class="detail-content">[Draft prompts: guest service, F&amp;B operations, resort standards. Confirm your actual duties.]</span>
+                    </div>
+                    <div class="exp-notes-detail">
+                      <span class="detail-lead">Related skills &middot;</span>
+                      <span class="detail-content">[Add related skills you practised.]</span>
+                    </div>
+                  </div>
+                  <div class="exp-photo-col">
+                    <div class="exp-photo-card">
+                      <img src="assets/exp_table_service.jpg" alt="Paradisus by Melia" onerror="this.src='assets/hero_hotel_bg.jpg'" />
+                      <div class="exp-photo-tag">
+                        <span class="exp-photo-location">IBSC &middot; Nusa Dua, Bali</span>
+                        <span class="exp-photo-title">PHOTO PLACEHOLDER &middot; REPLACE</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Timeline Item 3: Apurva Kempinski -->
+          <div class="exp-item is-expanded reveal-on-scroll">
+            <div class="exp-time-col">
+              <span class="exp-dot"></span>
+              <span class="exp-date">Start &middot; July 2026</span>
+            </div>
+            <div class="exp-body-col">
+              <div class="exp-header-row">
+                <div class="exp-header-titles">
+                  <h3 class="exp-employer">Apurva Kempinski</h3>
+                  <div class="exp-role-title">Banquet Service Daily Worker (On-Call)</div>
+                  <div class="exp-role-badge">YHI &middot; Bali</div>
+                </div>
+                <button type="button" class="exp-toggle-btn" aria-label="Toggle details" aria-expanded="true">
+                  <span class="exp-toggle-icon">&minus;</span>
+                </button>
+              </div>
+              <div class="exp-notes-box">
+                <div class="exp-notes-content-grid">
+                  <div class="exp-notes-text-col">
+                    <div class="exp-notes-tag">EXPERIENCE NOTES &middot; EDITABLE DRAFT</div>
+                    <p class="exp-notes-story">
+                      [Add a short account of your experience at Apurva Kempinski.]
+                    </p>
+                    <div class="exp-notes-detail">
+                      <span class="detail-lead">Responsibilities &middot;</span>
+                      <span class="detail-content">[Draft prompts: luxury service, event setup, guest relations. Confirm your actual duties.]</span>
+                    </div>
+                    <div class="exp-notes-detail">
+                      <span class="detail-lead">Related skills &middot;</span>
+                      <span class="detail-content">[Add related skills you practised.]</span>
+                    </div>
+                  </div>
+                  <div class="exp-photo-col">
+                    <div class="exp-photo-card">
+                      <img src="assets/exp_banquet_event.jpg" alt="Apurva Kempinski Bali" onerror="this.src='assets/hero_hotel_bg.jpg'" />
+                      <div class="exp-photo-tag">
+                        <span class="exp-photo-location">YHI &middot; Bali</span>
+                        <span class="exp-photo-title">PHOTO PLACEHOLDER &middot; REPLACE</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ============================================================
+       03 / SELECTED PORTFOLIO SECTION
+  ============================================================ -->
+  <section class="portfolio-section" id="portofolio">
+    <div class="portfolio-inner">
+
+      <!-- Section Header -->
+      <div class="portfolio-header reveal-on-scroll">
+        <p class="portfolio-eyebrow" data-i18n="portfolio_eyebrow">03 / Selected Portfolio</p>
+        <h2 class="portfolio-headline" data-i18n="portfolio_headline">Experiences in Practice.</h2>
+        <p class="portfolio-subtext" data-i18n="portfolio_subtext">
+          A place for the work, the preparation and the learning in between. These project examples are draft documentation, not completed project claims.
+        </p>
+      </div>
+
+      <!-- Filter Buttons -->
+      <div class="portfolio-filters reveal-on-scroll" role="group" aria-label="Filter portfolio projects">
+        <button type="button" class="pf-btn active" data-filter="all" data-i18n="filter_all">All Work</button>
+        <button type="button" class="pf-btn" data-filter="corporate" data-i18n="filter_corporate">Corporate</button>
+        <button type="button" class="pf-btn" data-filter="banquet" data-i18n="filter_banquet">Banquet</button>
+        <button type="button" class="pf-btn" data-filter="fnb" data-i18n="filter_fnb">F&amp;B Service</button>
+        <button type="button" class="pf-btn" data-filter="events" data-i18n="filter_events">Events</button>
+        <button type="button" class="pf-btn" data-filter="luxury" data-i18n="filter_luxury">Luxury Standards</button>
+      </div>
+
+      <!-- Portfolio Grid (Row 1: 2 Large Cards | Row 2: 3 Cards) -->
+      <div class="portfolio-grid">
+
+        <!-- Card 1 (Large - Row 1 Left) -->
+        <div class="pf-card pf-card--large reveal-on-scroll" data-category="corporate">
+          <div class="pf-card-img-wrap">
+            <img src="assets/pf_resort_table.jpg" alt="Corporate Hospitality Setting" onerror="this.src='assets/hero_hotel_bg.jpg'" />
+            <div class="pf-img-overlay">PHOTO PLACEHOLDER &middot; REPLACE</div>
+          </div>
+          <div class="pf-card-body">
+            <span class="pf-category-tag">CORPORATE HOSPITALITY</span>
+            <h3 class="pf-card-title">The details before the doors open</h3>
+            <p class="pf-card-meta">DRAFT DOCUMENTATION &middot; BNDCC &middot; Nusa Dua, Bali</p>
+            <p class="pf-card-desc">
+              [Draft: document a corporate service setting, your role and one detail you learned to notice.]
+            </p>
+            <a href="#portofolio" class="pf-view-link">View Details <span class="pf-arrow">&#8599;</span></a>
+          </div>
+        </div>
+
+        <!-- Card 2 (Large - Row 1 Right) -->
+        <div class="pf-card pf-card--large reveal-on-scroll" data-category="banquet">
+          <div class="pf-card-img-wrap">
+            <img src="assets/pf_banquet_long.jpg" alt="Banquet Grand Setup" onerror="this.src='assets/hero_hotel_bg.jpg'" />
+            <div class="pf-img-overlay">PHOTO PLACEHOLDER &middot; REPLACE</div>
+          </div>
+          <div class="pf-card-body">
+            <span class="pf-category-tag">CORPORATE HOSPITALITY</span>
+            <h3 class="pf-card-title">The details before the doors open</h3>
+            <p class="pf-card-meta">DRAFT DOCUMENTATION &middot; Paradisus by Melia &middot; Nusa Dua</p>
+            <p class="pf-card-desc">
+              [Draft: document a corporate service setting, your role and one detail you learned to notice.]
+            </p>
+            <a href="#portofolio" class="pf-view-link">View Details <span class="pf-arrow">&#8599;</span></a>
+          </div>
+        </div>
+
+        <!-- Card 3 (Row 2 Col 1) -->
+        <div class="pf-card reveal-on-scroll reveal-delay-1" data-category="fnb">
+          <div class="pf-card-img-wrap">
+            <img src="assets/pf_plates_prep.jpg" alt="Plates and Service Prep" onerror="this.src='assets/hero_hotel_bg.jpg'" />
+            <div class="pf-img-overlay">PHOTO PLACEHOLDER &middot; REPLACE</div>
+          </div>
+          <div class="pf-card-body">
+            <span class="pf-category-tag">CORPORATE HOSPITALITY</span>
+            <h3 class="pf-card-title">The details before the doors open</h3>
+            <p class="pf-card-meta">DRAFT DOCUMENTATION &middot; BNDCC &middot; Gala Operations</p>
+            <p class="pf-card-desc">
+              [Draft: document a corporate service setting, your role and one detail you learned to notice.]
+            </p>
+            <a href="#portofolio" class="pf-view-link">View Details <span class="pf-arrow">&#8599;</span></a>
+          </div>
+        </div>
+
+        <!-- Card 4 (Row 2 Col 2) -->
+        <div class="pf-card reveal-on-scroll reveal-delay-2" data-category="events">
+          <div class="pf-card-img-wrap">
+            <img src="assets/exp_table_service.jpg" alt="Terrace Dining Operations" onerror="this.src='assets/hero_hotel_bg.jpg'" />
+            <div class="pf-img-overlay">PHOTO PLACEHOLDER &middot; REPLACE</div>
+          </div>
+          <div class="pf-card-body">
+            <span class="pf-category-tag">CORPORATE HOSPITALITY</span>
+            <h3 class="pf-card-title">The details before the doors open</h3>
+            <p class="pf-card-meta">DRAFT DOCUMENTATION &middot; Apurva Kempinski &middot; YHI</p>
+            <p class="pf-card-desc">
+              [Draft: document a corporate service setting, your role and one detail you learned to notice.]
+            </p>
+            <a href="#portofolio" class="pf-view-link">View Details <span class="pf-arrow">&#8599;</span></a>
+          </div>
+        </div>
+
+        <!-- Card 5 (Row 2 Col 3) -->
+        <div class="pf-card reveal-on-scroll reveal-delay-3" data-category="luxury">
+          <div class="pf-card-img-wrap">
+            <img src="assets/pf_tea_tray.jpg" alt="VIP Tray Service Setup" onerror="this.src='assets/hero_hotel_bg.jpg'" />
+            <div class="pf-img-overlay">PHOTO PLACEHOLDER &middot; REPLACE</div>
+          </div>
+          <div class="pf-card-body">
+            <span class="pf-category-tag">CORPORATE HOSPITALITY</span>
+            <h3 class="pf-card-title">The details before the doors open</h3>
+            <p class="pf-card-meta">DRAFT DOCUMENTATION &middot; Mediterranean Bali &middot; Training</p>
+            <p class="pf-card-desc">
+              [Draft: document a corporate service setting, your role and one detail you learned to notice.]
+            </p>
+            <a href="#portofolio" class="pf-view-link">View Details <span class="pf-arrow">&#8599;</span></a>
+          </div>
+        </div>
+
+      </div><!-- .portfolio-grid -->
+
+      <!-- Portfolio Footer Note -->
+      <p class="portfolio-footer-note reveal-on-scroll">
+        All references or photographs are representative placeholders. Add your own approved images, verified service dates and project descriptions before publishing.
+      </p>
+
+    </div><!-- .portfolio-inner -->
+  </section>
+
+
+
+  <!-- ============================================================
+       04 / HONORS & ACHIEVEMENTS SECTION (Putih)
+  ============================================================ -->
+  <section class="achievements-section" id="achievements">
+    <div class="achievements-inner">
+
+      <!-- Section Header -->
+      <div class="achievements-header reveal-on-scroll">
+        <p class="achievements-eyebrow" data-i18n="achieve_eyebrow">04 / Honors &amp; Credentials</p>
+        <h2 class="achievements-headline" data-i18n="achieve_headline">Milestones of Dedication.</h2>
+        <p class="achievements-subtext" data-i18n="achieve_subtext">
+          Verified certifications, competition achievements, and professional hospitality credentials demonstrating commitment to service excellence.
+        </p>
+      </div>
+
+      <!-- Filter Buttons -->
+      <div class="achievements-filters reveal-on-scroll" role="group" aria-label="Filter achievements">
+        <button type="button" class="achieve-filter-btn active" data-filter="all" data-i18n="achieve_filter_all">All Credentials</button>
+        <button type="button" class="achieve-filter-btn" data-filter="award" data-i18n="achieve_filter_award">Competitions &amp; Awards</button>
+        <button type="button" class="achieve-filter-btn" data-filter="cert" data-i18n="achieve_filter_cert">Certifications</button>
+        <button type="button" class="achieve-filter-btn" data-filter="training" data-i18n="achieve_filter_training">Specialized Training</button>
+      </div>
+
+      <!-- Achievements Cards Grid -->
+      <div class="achievements-grid">
+
+        <!-- Card 1: 1st Winner Competition -->
+        <div class="achieve-card reveal-on-scroll reveal-delay-1" data-category="award">
+          <div class="achieve-card-top">
+            <div class="achieve-badge-pill achieve-badge-pill--gold">
+              <span class="achieve-badge-icon">&#9733;</span>
+              <span>1st Winner &middot; Gold</span>
+            </div>
+            <span class="achieve-year">Nov 2025</span>
+          </div>
+          <div class="achieve-card-body">
+            <h3 class="achieve-card-title">Table Setup &amp; Fine Dining Service Competition</h3>
+            <p class="achieve-card-issuer">Bali Hospitality &amp; Culinary Skills Showcase</p>
+            <p class="achieve-card-desc">
+              Awarded 1st place in precision table setting, silver service protocol, wine presentation etiquette, and synchronized guest service timing.
+            </p>
+          </div>
+          <div class="achieve-card-footer">
+            <span class="achieve-status-tag">Verified Award</span>
+            <a href="#achievements" class="achieve-link">View Certificate <span class="achieve-arrow">&#8599;</span></a>
+          </div>
+        </div>
+
+        <!-- Card 2: BNSP National Certification -->
+        <div class="achieve-card reveal-on-scroll reveal-delay-2" data-category="cert">
+          <div class="achieve-card-top">
+            <div class="achieve-badge-pill achieve-badge-pill--emerald">
+              <span class="achieve-badge-icon">&#10003;</span>
+              <span>National Certification</span>
+            </div>
+            <span class="achieve-year">Oct 2025</span>
+          </div>
+          <div class="achieve-card-body">
+            <h3 class="achieve-card-title">Food &amp; Beverage Service Professional (Level II)</h3>
+            <p class="achieve-card-issuer">BNSP (Badan Nasional Sertifikasi Profesi) Indonesia</p>
+            <p class="achieve-card-desc">
+              National qualification certifying competency in five-star banquet setup, sequence of table service, beverage presentation, and hygiene.
+            </p>
+          </div>
+          <div class="achieve-card-footer">
+            <span class="achieve-status-tag">Reg. #BNSP-FBS-2025</span>
+            <a href="#achievements" class="achieve-link">View Credential <span class="achieve-arrow">&#8599;</span></a>
+          </div>
+        </div>
+
+        <!-- Card 3: Food Safety & Hygiene HACCP -->
+        <div class="achieve-card reveal-on-scroll reveal-delay-3" data-category="training">
+          <div class="achieve-card-top">
+            <div class="achieve-badge-pill achieve-badge-pill--blue">
+              <span class="achieve-badge-icon">&#9670;</span>
+              <span>Food Safety Protocol</span>
+            </div>
+            <span class="achieve-year">Sep 2025</span>
+          </div>
+          <div class="achieve-card-body">
+            <h3 class="achieve-card-title">HACCP &amp; International Food Safety Standards</h3>
+            <p class="achieve-card-issuer">Mediterranean Bali Ubud &middot; Hygiene Board</p>
+            <p class="achieve-card-desc">
+              Comprehensive certification in sanitary food handling, allergen protocol management, banquet temperature holding safety, and clean operations.
+            </p>
+          </div>
+          <div class="achieve-card-footer">
+            <span class="achieve-status-tag">Active Protocol</span>
+            <a href="#achievements" class="achieve-link">View Certificate <span class="achieve-arrow">&#8599;</span></a>
+          </div>
+        </div>
+
+        <!-- Card 4: Guest Relations & Concierge -->
+        <div class="achieve-card reveal-on-scroll reveal-delay-1" data-category="cert">
+          <div class="achieve-card-top">
+            <div class="achieve-badge-pill achieve-badge-pill--emerald">
+              <span class="achieve-badge-icon">&#10003;</span>
+              <span>Hospitality Honors</span>
+            </div>
+            <span class="achieve-year">Jan 2026</span>
+          </div>
+          <div class="achieve-card-body">
+            <h3 class="achieve-card-title">Five-Star Guest Relations &amp; Front Office Essentials</h3>
+            <p class="achieve-card-issuer">Mediterranean Bali Ubud &middot; Hospitality Division</p>
+            <p class="achieve-card-desc">
+              Commended for exceptional guest greeting etiquette, problem solving under pressure, cultural diplomacy, and handling VIP arrivals.
+            </p>
+          </div>
+          <div class="achieve-card-footer">
+            <span class="achieve-status-tag">Verified Credential</span>
+            <a href="#achievements" class="achieve-link">View Certificate <span class="achieve-arrow">&#8599;</span></a>
+          </div>
+        </div>
+
+        <!-- Card 5: English for International Hospitality C1 -->
+        <div class="achieve-card reveal-on-scroll reveal-delay-2" data-category="training">
+          <div class="achieve-card-top">
+            <div class="achieve-badge-pill achieve-badge-pill--gold">
+              <span class="achieve-badge-icon">&#9733;</span>
+              <span>Language Proficiency</span>
+            </div>
+            <span class="achieve-year">Dec 2025</span>
+          </div>
+          <div class="achieve-card-body">
+            <h3 class="achieve-card-title">English for International Hospitality &middot; CEFR C1</h3>
+            <p class="achieve-card-issuer">Global Hospitality Language Assessment</p>
+            <p class="achieve-card-desc">
+              Advanced fluency in international guest dialogue, formal banquet addresses, nuanced culinary descriptions, and multi-cultural communication.
+            </p>
+          </div>
+          <div class="achieve-card-footer">
+            <span class="achieve-status-tag">CEFR C1 Advanced</span>
+            <a href="#achievements" class="achieve-link">View Certificate <span class="achieve-arrow">&#8599;</span></a>
+          </div>
+        </div>
+
+        <!-- Card 6: Mocktail Craft & Mixology -->
+        <div class="achieve-card reveal-on-scroll reveal-delay-3" data-category="award">
+          <div class="achieve-card-top">
+            <div class="achieve-badge-pill achieve-badge-pill--blue">
+              <span class="achieve-badge-icon">&#9670;</span>
+              <span>Skills Distinction</span>
+            </div>
+            <span class="achieve-year">Feb 2026</span>
+          </div>
+          <div class="achieve-card-body">
+            <h3 class="achieve-card-title">Creative Beverage Craft &amp; Mocktail Presentation</h3>
+            <p class="achieve-card-issuer">Bali Mixology &amp; Beverage Association</p>
+            <p class="achieve-card-desc">
+              Recognized for innovative tropical flavor balancing, glass garnish artistry, and high-speed bar station turnaround during banquet events.
+            </p>
+          </div>
+          <div class="achieve-card-footer">
+            <span class="achieve-status-tag">Skills Verified</span>
+            <a href="#achievements" class="achieve-link">View Certificate <span class="achieve-arrow">&#8599;</span></a>
+          </div>
+        </div>
+
+      </div><!-- .achievements-grid -->
+
+    </div><!-- .achievements-inner -->
+  </section>
+
+  <!-- ============================================================
+       05 / JOURNAL & BLOG SECTION (Ijo)
+  ============================================================ -->
+  <section class="journal-section" id="journal">
+    <div class="journal-inner">
+
+      <!-- Section Header -->
+      <div class="journal-header reveal-on-scroll">
+        <p class="journal-eyebrow" data-i18n="journal_eyebrow">05 / Journal &amp; Blog</p>
+        <h2 class="journal-headline" data-i18n="journal_headline">Notes From the Hospitality Journey.</h2>
+        <p class="journal-subtext" data-i18n="journal_subtext">
+          Journal: personal reflections and growth. Blog: service knowledge and hospitality insights. A space to learn, reflect and share.
+        </p>
+      </div>
+
+      <!-- Journal Cards Grid (3 Columns) -->
+      <div class="journal-grid">
+
+        <!-- Journal Card 1 -->
+        <article class="journal-card reveal-on-scroll reveal-delay-1">
+          <div class="journal-card-img-wrap">
+            <img src="assets/jnl_notebook.jpg" alt="Reflections and Notes on Service" onerror="this.src='assets/hero_hotel_bg.jpg'" />
+            <div class="journal-img-overlay">PHOTO PLACEHOLDER &middot; REPLACE</div>
+          </div>
+          <div class="journal-card-body">
+            <div class="journal-meta-row">
+              <span class="journal-category">JOURNAL &middot; CAREER REFLECTIONS</span>
+              <span class="journal-byline">[Publication date] &middot; [Reading time]</span>
+            </div>
+            <h3 class="journal-card-title">Learning to notice the little things</h3>
+            <p class="journal-card-desc">
+              [Draft: a personal reflection on attention to detail during your early service experience.]
+            </p>
+            <div class="journal-card-footer">
+              <a href="#journal" class="journal-read-link">Read Article <span class="jnl-arrow">&#8599;</span></a>
+              <div class="journal-draft-note">EDITABLE ARTICLE DRAFT</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Journal Card 2 -->
+        <article class="journal-card reveal-on-scroll reveal-delay-2">
+          <div class="journal-card-img-wrap">
+            <img src="assets/pf_resort_table.jpg" alt="Service Standards and Station Setup" onerror="this.src='assets/hero_hotel_bg.jpg'" />
+            <div class="journal-img-overlay">PHOTO PLACEHOLDER &middot; REPLACE</div>
+          </div>
+          <div class="journal-card-body">
+            <div class="journal-meta-row">
+              <span class="journal-category">JOURNAL &middot; CAREER REFLECTIONS</span>
+              <span class="journal-byline">[Publication date] &middot; [Reading time]</span>
+            </div>
+            <h3 class="journal-card-title">Learning to notice the little things</h3>
+            <p class="journal-card-desc">
+              [Draft: a personal reflection on attention to detail during your early service experience.]
+            </p>
+            <div class="journal-card-footer">
+              <a href="#journal" class="journal-read-link">Read Article <span class="jnl-arrow">&#8599;</span></a>
+              <div class="journal-draft-note">EDITABLE ARTICLE DRAFT</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Journal Card 3 -->
+        <article class="journal-card reveal-on-scroll reveal-delay-3">
+          <div class="journal-card-img-wrap">
+            <img src="assets/pf_tea_tray.jpg" alt="Guest Care and Authentic Warmth" onerror="this.src='assets/hero_hotel_bg.jpg'" />
+            <div class="journal-img-overlay">PHOTO PLACEHOLDER &middot; REPLACE</div>
+          </div>
+          <div class="journal-card-body">
+            <div class="journal-meta-row">
+              <span class="journal-category">JOURNAL &middot; CAREER REFLECTIONS</span>
+              <span class="journal-byline">[Publication date] &middot; [Reading time]</span>
+            </div>
+            <h3 class="journal-card-title">Learning to notice the little things</h3>
+            <p class="journal-card-desc">
+              [Draft: a personal reflection on attention to detail during your early service experience.]
+            </p>
+            <div class="journal-card-footer">
+              <a href="#journal" class="journal-read-link">Read Article <span class="jnl-arrow">&#8599;</span></a>
+              <div class="journal-draft-note">EDITABLE ARTICLE DRAFT</div>
+            </div>
+          </div>
+        </article>
+
+      </div><!-- .journal-grid -->
+
+    </div><!-- .journal-inner -->
+  </section>
+
+  
+  <!-- ============================================================
+       06 / CONTACT SECTION (Putih Container with Floating Hero Card)
+  ============================================================ -->
+  <section class="contact-section" id="contact">
+    <div class="contact-inner">
+
+      <!-- Immersive Card Container with Atmospheric Resort Backdrop -->
+      <div class="contact-hero-card reveal-on-scroll">
+        <div class="contact-hero-bg">
+          <img src="assets/contact_ambient.jpg" alt="Hospitality Ambience" onerror="this.src='assets/hero_hotel_bg.jpg'" />
+          <div class="contact-hero-overlay"></div>
+        </div>
+
+        <div class="contact-grid">
+
+          <!-- Left Column: Floating Form Card -->
+          <div class="contact-form-card reveal-on-scroll reveal-delay-1">
+            <div class="contact-form-top-bar">
+              <span class="contact-form-brand">Ardan &bull; INAS</span>
+              <span class="contact-form-badge">Open for Roles</span>
+            </div>
+            <div class="contact-form-content">
+              <h3 class="contact-form-heading" data-i18n="contact_form_title">Reach Out to Me</h3>
+              <p class="contact-form-sub" data-i18n="contact_form_sub">Send an inquiry for banquet daily worker, training, or hospitality collaboration.</p>
+
+              <form class="contact-form" id="portfolio-contact-form" onsubmit="event.preventDefault(); alert('Terima kasih! Pesan Anda telah terkirim.');">
+                <div class="form-group">
+                  <label for="contact-name" class="form-label">Name</label>
+                  <input type="text" id="contact-name" name="name" autocomplete="name" class="form-input" placeholder="Your Name / Hotel / Company" required />
+                </div>
+                <div class="form-group">
+                  <label for="contact-email" class="form-label">Email</label>
+                  <input type="email" id="contact-email" name="email" autocomplete="email" class="form-input" placeholder="jane@hospitality.com" required />
+                </div>
+                <div class="form-group">
+                  <label for="contact-message" class="form-label">Message</label>
+                  <textarea id="contact-message" name="message" class="form-textarea" rows="4" placeholder="Tell me about your event or opportunity..." required></textarea>
+                </div>
+                <button type="submit" class="contact-submit-btn">
+                  <span>SEND MESSAGE</span>
+                  <span class="submit-arrow">&#8599;</span>
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <!-- Right Column: Big Bold Typography & Value Proposition -->
+          <div class="contact-info-col reveal-on-scroll reveal-delay-2">
+            <div class="contact-tag-badge">
+              <span class="contact-tag-dot"></span>
+              <span>HOSPITALITY COLLABORATION</span>
+            </div>
+
+            <h2 class="contact-display-title">
+              LET'S WORK<br />
+              <span class="contact-title-highlight">TOGETHER</span>
+            </h2>
+
+            <div class="contact-value-box">
+              <div class="contact-value-icon">&#10022;</div>
+              <div class="contact-value-text">
+                <h4 class="contact-value-title">RESULTS-DRIVEN HOSPITALITY</h4>
+                <p class="contact-value-desc">
+                  Refining the guest journey through meticulous service preparation, genuine Balinese warmth, and dependable teamwork behind the scenes.
+                </p>
+              </div>
+            </div>
+
+            <div class="contact-quick-details">
+              <div class="contact-detail-row">
+                <span class="contact-detail-label">Direct Phone</span>
+                <a href="tel:+6282341234567" class="contact-detail-val">(+62) 823-4123-4567</a>
+              </div>
+              <div class="contact-detail-row">
+                <span class="contact-detail-label">Direct Email</span>
+                <a href="mailto:komangari2910@gmail.com" class="contact-detail-val">komangari2910@gmail.com</a>
+              </div>
+              <div class="contact-detail-row">
+                <span class="contact-detail-label">Current Location</span>
+                <span class="contact-detail-val">Bali, Indonesia &middot; Available Island-wide</span>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- .contact-grid -->
+      </div><!-- .contact-hero-card -->
+
+    </div><!-- .contact-inner -->
+  </section>
+
+  <!-- ============================================================
+       07 / EDITORIAL SITE FOOTER (With Landscape Panorama & Giant Watermark)
+  ============================================================ -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+
+      <!-- Top 4 Columns Grid -->
+      <div class="footer-top-grid">
+
+        <!-- Column 1: Brand & Bio -->
+        <div class="footer-col-brand">
+          <div class="footer-brand-header">
+            <span class="footer-brand-logo">INAS</span>
+            <span class="footer-brand-title">I NYOMAN ARI SUARDANA</span>
+          </div>
+          <p class="footer-brand-lead">Your Dedicated Food &amp; Beverage Attendant</p>
+          <p class="footer-brand-bio">
+            Food &amp; Beverage student at Mediterranean Bali Ubud. Bringing care, curiosity and refined attention to detail into every guest experience.
+          </p>
+          <a href="#contact" class="footer-cta-pill">
+            <span class="footer-cta-dot"></span>
+            <span>Download CV &amp; Connect</span>
+            <span class="footer-cta-arrow">&#8599;</span>
+          </a>
+          <p class="footer-copyright">&copy; 2026 INAS &middot; All rights reserved</p>
+          <p class="footer-made-with">Crafted with care in Bali, Indonesia &#127796;</p>
+        </div>
+
+        <!-- Column 2: Menu Links -->
+        <div class="footer-col-nav">
+          <h4 class="footer-heading">Menu</h4>
+          <ul class="footer-links-list">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#portofolio">Selected Portfolio</a></li>
+            <li><a href="#achievements">Achievements</a></li>
+            <li><a href="#journal">Journal</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Navigation / Details -->
+        <div class="footer-col-nav">
+          <h4 class="footer-heading">Navigation</h4>
+          <ul class="footer-links-list">
+            <li><a href="#contact">Contact &amp; Inquiries</a></li>
+            <li><a href="#experience">BNDCC Banquet</a></li>
+            <li><a href="#experience">Paradisus by Melia</a></li>
+            <li><a href="#experience">Apurva Kempinski</a></li>
+            <li><a href="#achievements">BNSP Certification</a></li>
+            <li><a href="#home">Back to Top &uarr;</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Social & Direct Channels -->
+        <div class="footer-col-nav">
+          <h4 class="footer-heading">Connect</h4>
+          <ul class="footer-links-list">
+            <li><a href="https://linkedin.com/in/inas-ardan" target="_blank" rel="noreferrer">LinkedIn &#8599;</a></li>
+            <li><a href="https://instagram.com/inas_ardan" target="_blank" rel="noreferrer">Instagram &#8599;</a></li>
+            <li><a href="mailto:komangari2910@gmail.com">komangari2910@gmail.com</a></li>
+            <li><a href="tel:+6282341234567">(+62) 823-4123-4567</a></li>
+            <li><a href="https://wa.me/6282341234567" target="_blank" rel="noreferrer">WhatsApp Chat &#8599;</a></li>
+          </ul>
+        </div>
+
+      </div><!-- .footer-top-grid -->
+
+      <!-- Bottom Landscape Panorama with Giant Watermark Typography -->
+      <div class="footer-panorama-wrap">
+        <div class="footer-panorama-bg">
+          <img src="assets/footer_landscape.jpg" alt="Bali Horizon" onerror="this.src='assets/hero_hotel_bg.jpg'" />
+          <div class="footer-panorama-gradient"></div>
+        </div>
+        <div class="footer-watermark-text" aria-hidden="true">
+          SUARDANA
+        </div>
+      </div>
+
+    </div><!-- .footer-inner -->
+  </footer>
+
+
+  <div id="menu-overlay" aria-hidden="true">
+
+    <!-- Column 1: Big Editorial Links -->
+    <div class="menu-col-nav">
+      <div class="menu-item-row">
+        <a href="#home" class="menu-nav-anchor">
+          <span class="menu-nav-num">01</span><span data-i18n="nav_home">Home</span>
+        </a>
+      </div>
+      <div class="menu-item-row">
+        <a href="#about" class="menu-nav-anchor">
+          <span class="menu-nav-num">02</span><span data-i18n="nav_about">About</span>
+        </a>
+      </div>
+      <div class="menu-item-row">
+        <a href="#experience" class="menu-nav-anchor">
+          <span class="menu-nav-num">03</span><span data-i18n="nav_experience">Experience</span>
+        </a>
+      </div>
+      <div class="menu-item-row">
+        <a href="#portofolio" class="menu-nav-anchor">
+          <span class="menu-nav-num">04</span><span data-i18n="nav_portfolio">Portofolio</span>
+        </a>
+      </div>
+      <div class="menu-item-row">
+        <a href="#achievements" class="menu-nav-anchor">
+          <span class="menu-nav-num">05</span><span data-i18n="nav_achievements">Achievements</span>
+        </a>
+      </div>
+      <div class="menu-item-row">
+        <a href="#journal" class="menu-nav-anchor">
+          <span class="menu-nav-num">06</span><span data-i18n="nav_journal">Journal</span>
+        </a>
+      </div>
+      <div class="menu-item-row">
+        <a href="#contact" class="menu-nav-anchor">
+          <span class="menu-nav-num">07</span><span data-i18n="nav_connect">Contact</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Column 2: Center Separator Crosshairs -->
+    <div class="menu-col-center">
+      <div class="menu-center-mark">+</div>
+      <div class="menu-center-mark">+</div>
+      <div class="menu-center-mark">+</div>
+      <div class="menu-center-mark">+</div>
+      <div class="menu-center-mark">+</div>
+      <div class="menu-center-mark">+</div>
+      <div class="menu-center-mark">+</div>
+    </div>
+
+    <!-- Column 3: Contact & Status Details -->
+    <div class="menu-col-info">
+      <div class="menu-info-block">
+        <div class="menu-info-label" data-i18n="contact_phone_label">Contact Phone</div>
+        <div class="menu-info-val">
+          <a href="tel:+6282341234567">(+62) 823-4123-4567</a>
+        </div>
+      </div>
+      <div class="menu-info-block">
+        <div class="menu-info-label" data-i18n="contact_mail_label">Contact Mail</div>
+        <div class="menu-info-val">
+          <a href="mailto:komangari2910@gmail.com">komangari2910@gmail.com</a>
+        </div>
+      </div>
+      <div class="menu-info-block">
+        <div class="menu-info-label">LinkedIn</div>
+        <div class="menu-info-val">
+          <a href="https://linkedin.com/in/inas-ardan" target="_blank" rel="noreferrer">
+            linkedin.com/in/inas-ardan
+          </a>
+        </div>
+      </div>
+      <div class="menu-info-block">
+        <div class="menu-info-label" data-i18n="location_status_label">Location &amp; Status</div>
+        <div class="menu-info-val">
+          Bali, Indonesia<br />
+          <span style="font-size: 13.5px; opacity: 0.65; font-weight: 400;" data-i18n="location_status_sub">
+            Open to Daily Worker &amp; Training Opportunities
+          </span>
+        </div>
+      </div>
+      <!-- Language Switcher & Dark Mode Toggle -->
+      <div class="menu-info-block menu-preferences-block">
+        <div class="menu-info-label" data-i18n="preferences_title">Preferences &amp; Settings</div>
+        <div class="menu-controls-row">
+          
+          <!-- Language Selector (EN / ID) -->
+          <div class="pref-control-box">
+            <span class="pref-label" data-i18n="lang_label">Language</span>
+            <div class="lang-pill-switch" role="group" aria-label="Language selection">
+              <button type="button" class="lang-btn active" data-lang="en">EN</button>
+              <span class="lang-pill-divider">/</span>
+              <button type="button" class="lang-btn" data-lang="id">ID</button>
+            </div>
+          </div>
+
+          <!-- Dark Mode Toggle -->
+          <div class="pref-control-box">
+            <span class="pref-label" data-i18n="theme_label">Theme</span>
+            <button type="button" class="theme-pill-toggle" id="theme-toggle-btn" aria-label="Toggle dark mode">
+              <span class="theme-icon light-icon" title="Light Theme">☼</span>
+              <span class="theme-switch-slider">
+                <span class="theme-switch-knob"></span>
+              </span>
+              <span class="theme-icon dark-icon" title="Dark Theme">☾</span>
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ============================================================
+       EXTERNAL JAVASCRIPT
+  ============================================================ -->
+  <script src="js/main.js"></script>
+
+</body>
+
+</html>

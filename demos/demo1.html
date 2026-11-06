@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>INAS — I Nyoman Ari Suardana</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ===================== RESET & BASE ===================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --sage:        #8C9E8A;
+      --sage-light:  #C8D4C6;
+      --sage-pale:   #EAF0E8;
+      --cream:       #F7F4EE;
+      --cream-dark:  #EFEBE3;
+      --text:        #2A2A2A;
+      --text-muted:  #7A7A72;
+      --text-light:  #AEAEA6;
+      --border:      #DDDBD5;
+      --dark:        #1C1C1A;
+      --dark-soft:   #2E2E2B;
+      --white:       #FFFFFF;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--cream);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 500;
+      line-height: 1.2;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    /* ===================== UTILS ===================== */
+    .container {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    .label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0;
+    }
+
+    /* ===================== NAV ===================== */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--cream);
+      border-bottom: 1px solid var(--border);
+      padding: 18px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    /* ===================== HERO ===================== */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: calc(100vh - 61px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 60px 80px 40px;
+      border-right: 1px solid var(--border);
+    }
+
+    .hero-left .label { margin-bottom: 28px; }
+
+    .hero-left h1 {
+      font-size: clamp(38px, 5vw, 60px);
+      font-weight: 400;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+
+    .hero-subtitle {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin-bottom: 36px;
+      font-style: italic;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .hero-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      max-width: 400px;
+      line-height: 1.8;
+      margin-bottom: 48px;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .btn-primary {
+      background: var(--sage);
+      color: var(--white);
+      padding: 12px 28px;
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 500;
+      transition: background 0.2s, transform 0.15s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover { background: #7A8E78; transform: translateY(-1px); }
+
+    .btn-link {
+      font-size: 13px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+
+    .btn-link:hover { color: var(--text); }
+    .btn-link::after { content: '↗'; font-size: 12px; }
+
+    /* Hero Right — INAS arch card */
+    .hero-right {
+      background: var(--sage-pale);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .inas-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      width: 200px;
+      height: 280px;
+      background: var(--sage-light);
+      border-radius: 100px 100px 0 0;
+      padding: 32px 24px 28px;
+      position: relative;
+    }
+
+    .inas-card-label {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .inas-card-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-weight: 500;
+      color: var(--text);
+      letter-spacing: 0.06em;
+    }
+
+    .inas-card-role {
+      font-size: 10px;
+      text-align: center;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .hero-bg-text {
+      position: absolute;
+      bottom: 40px;
+      right: 40px;
+      font-size: 11px;
+      color: var(--sage);
+      opacity: 0.5;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* ===================== ABOUT ===================== */
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .about-image {
+      background: var(--cream-dark);
+      min-height: 480px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-right: 1px solid var(--border);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .about-image-placeholder {
+      width: 100%;
+      height: 100%;
+      min-height: 480px;
+      background: linear-gradient(135deg, var(--cream-dark) 0%, var(--sage-pale) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-light);
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .about-content {
+      padding: 72px 60px 72px 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .about-content .label { margin-bottom: 16px; }
+
+    .about-content h2 {
+      font-size: clamp(28px, 3vw, 40px);
+      margin-bottom: 28px;
+      font-weight: 400;
+    }
+
+    .about-content p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.9;
+      margin-bottom: 20px;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 40px;
+      padding-top: 36px;
+      border-top: 1px solid var(--border);
+    }
+
+    .stat-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-light);
+      margin-bottom: 6px;
+    }
+
+    .stat-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--text);
+    }
+
+    /* ===================== SERVICES ===================== */
+    .services {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .services-header {
+      padding: 64px 40px 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: end;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .services-header .label { margin-bottom: 16px; }
+    .services-header h2 {
+      font-size: clamp(28px, 3vw, 42px);
+      font-weight: 400;
+    }
+
+    .services-header p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .service-item {
+      padding: 48px 36px;
+      border-right: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+
+    .service-item:last-child { border-right: none; }
+    .service-item:hover { background: var(--sage-pale); }
+
+    .service-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: var(--sage-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      font-size: 16px;
+    }
+
+    .service-item h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+
+    .service-item p {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    /* ===================== EXPERIENCE ===================== */
+    .experience {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .experience-left {
+      padding: 72px 60px 72px 40px;
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .experience-left .label { margin-bottom: 16px; }
+    .experience-left h2 {
+      font-size: clamp(28px, 3vw, 42px);
+      font-weight: 400;
+      margin-bottom: 20px;
+    }
+
+    .experience-left p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    .experience-right {
+      padding: 72px 40px 72px 60px;
+    }
+
+    .exp-card {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+      margin-bottom: 16px;
+      background: var(--white);
+      transition: box-shadow 0.2s, transform 0.15s;
+    }
+
+    .exp-card:hover {
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+      transform: translateY(-2px);
+    }
+
+    .exp-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 10px;
+    }
+
+    .exp-title {
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--text);
+    }
+
+    .exp-company {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .exp-year {
+      font-size: 12px;
+      color: var(--text-light);
+      white-space: nowrap;
+    }
+
+    .exp-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+
+    .tag {
+      background: var(--sage-pale);
+      color: var(--sage);
+      font-size: 11px;
+      padding: 4px 12px;
+      border-radius: 100px;
+      font-weight: 500;
+    }
+
+    /* ===================== GROWTH ===================== */
+    .growth {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .growth-header {
+      padding: 72px 40px 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: end;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .growth-header .label { margin-bottom: 16px; }
+    .growth-header h2 {
+      font-size: clamp(26px, 3vw, 40px);
+      font-weight: 400;
+    }
+
+    .growth-header p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    .growth-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .growth-col {
+      padding: 48px 40px;
+      border-right: 1px solid var(--border);
+    }
+
+    .growth-col:last-child { border-right: none; }
+
+    .growth-col .label { margin-bottom: 20px; }
+
+    .growth-list {
+      list-style: none;
+    }
+
+    .growth-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--text-muted);
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      line-height: 1.6;
+    }
+
+    .growth-list li:last-child { border-bottom: none; }
+
+    .growth-list li::before {
+      content: '→';
+      color: var(--sage);
+      font-size: 12px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* ===================== CONNECT ===================== */
+    .connect {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .connect-left {
+      padding: 72px 60px 72px 40px;
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .connect-left .label { margin-bottom: 16px; }
+    .connect-left h2 {
+      font-size: clamp(26px, 3vw, 40px);
+      font-weight: 400;
+      margin-bottom: 20px;
+    }
+
+    .connect-left p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    .connect-right {
+      padding: 72px 40px 72px 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .connect-link {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 24px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-size: 14px;
+      color: var(--text);
+      background: var(--white);
+      transition: background 0.2s, transform 0.15s;
+      cursor: pointer;
+    }
+
+    .connect-link:hover {
+      background: var(--sage-pale);
+      transform: translateX(4px);
+    }
+
+    .connect-link span { color: var(--text-muted); font-size: 18px; }
+
+    /* ===================== DARK CTA ===================== */
+    .dark-cta {
+      background: var(--dark);
+      padding: 100px 40px;
+      text-align: center;
+      border-bottom: 1px solid #333;
+    }
+
+    .dark-cta .label {
+      color: var(--sage-light);
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .dark-cta h2 {
+      font-size: clamp(28px, 4vw, 52px);
+      color: var(--white);
+      font-weight: 400;
+      font-style: italic;
+      margin-bottom: 32px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 12px;
+      max-width: 440px;
+      margin: 0 auto;
+    }
+
+    .newsletter-form input {
+      flex: 1;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 100px;
+      padding: 12px 20px;
+      color: var(--white);
+      font-size: 13px;
+      font-family: 'Inter', sans-serif;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .newsletter-form input::placeholder { color: rgba(255,255,255,0.35); }
+    .newsletter-form input:focus { border-color: var(--sage-light); }
+
+    .newsletter-form button {
+      background: var(--sage);
+      color: var(--white);
+      border: none;
+      border-radius: 100px;
+      padding: 12px 24px;
+      font-size: 13px;
+      font-weight: 500;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .newsletter-form button:hover { background: #7A8E78; }
+
+    /* ===================== FOOTER ===================== */
+    footer {
+      background: var(--dark-soft);
+      padding: 64px 40px 40px;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .footer-brand .label {
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 20px;
+    }
+
+    .footer-brand h3 {
+      font-size: 22px;
+      color: var(--white);
+      font-weight: 400;
+      margin-bottom: 16px;
+    }
+
+    .footer-brand p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.8;
+    }
+
+    .footer-col h4 {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.4);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 20px;
+    }
+
+    .footer-col ul { list-style: none; }
+    .footer-col ul li {
+      margin-bottom: 12px;
+    }
+
+    .footer-col ul li a {
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+      transition: color 0.2s;
+    }
+
+    .footer-col ul li a:hover { color: var(--white); }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 32px;
+    }
+
+    .footer-bottom p {
+      font-size: 12px;
+      color: rgba(255,255,255,0.3);
+    }
+
+    /* ===================== CONTACT CTA ===================== */
+    .contact-cta {
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .contact-cta-left {
+      padding: 80px 60px 80px 40px;
+      border-right: 1px solid var(--border);
+    }
+
+    .contact-cta-left .label { margin-bottom: 20px; }
+    .contact-cta-left h2 {
+      font-size: clamp(28px, 3.5vw, 48px);
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 32px;
+    }
+
+    .contact-cta-left h2 em {
+      font-style: italic;
+      color: var(--sage);
+    }
+
+    .contact-cta-right {
+      padding: 80px 40px 80px 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .contact-info-block {
+      margin-bottom: 32px;
+    }
+
+    .contact-info-block .label { margin-bottom: 8px; }
+
+    .contact-info-block p {
+      font-size: 15px;
+      color: var(--text);
+    }
+
+    .contact-info-block a:hover { color: var(--sage); }
+
+    /* ===================== RESPONSIVE ===================== */
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+      .container { padding: 0 24px; }
+
+      .hero, .about, .experience, .connect, .contact-cta {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-left { padding: 60px 24px; border-right: none; border-bottom: 1px solid var(--border); }
+      .hero-right { min-height: 320px; }
+
+      .about-image { min-height: 300px; border-right: none; border-bottom: 1px solid var(--border); }
+      .about-content { padding: 48px 24px; }
+
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .service-item:nth-child(2) { border-right: none; }
+      .service-item:nth-child(3) { border-top: 1px solid var(--border); }
+      .service-item:nth-child(4) { border-top: 1px solid var(--border); border-right: none; }
+
+      .growth-grid { grid-template-columns: 1fr; }
+      .growth-col { border-right: none; border-bottom: 1px solid var(--border); }
+
+      .footer-top { grid-template-columns: 1fr 1fr; }
+
+      .experience-left { padding: 48px 24px; border-right: none; border-bottom: 1px solid var(--border); }
+      .experience-right { padding: 48px 24px; }
+
+      .connect-left { padding: 48px 24px; border-right: none; border-bottom: 1px solid var(--border); }
+      .connect-right { padding: 48px 24px; }
+
+      .services-header, .growth-header { grid-template-columns: 1fr; }
+      .services-header { padding: 48px 24px 36px; }
+      .growth-header { padding: 48px 24px 36px; }
+
+      .contact-cta-left { padding: 60px 24px; border-right: none; border-bottom: 1px solid var(--border); }
+      .contact-cta-right { padding: 48px 24px 60px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAV ===== -->
+  <nav>
+    <div class="nav-logo">INAS</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="hero-left">
+      <span class="label">Personal Website · 2026</span>
+      <h1>Hello, I am<br>I Nyoman Ari Suardana</h1>
+      <p class="hero-subtitle">Food & Beverage Attendant</p>
+      <p class="hero-desc">
+        Dedicated and passionate hospitality professional with a commitment to delivering
+        exceptional guest experiences. Known for warmth, attention to detail, and
+        a genuine love for the craft of service.
+      </p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">Get in touch</a>
+        <a href="#about" class="btn-link">Learn more</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="inas-card">
+        <span class="inas-card-label">est. 2026</span>
+        <span class="inas-card-name">INAS</span>
+        <span class="inas-card-role">I Nyoman Ari Suardana<br>Hospitality Professional</span>
+      </div>
+      <div class="hero-bg-text">Bali · Indonesia</div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="about" id="about">
+    <div class="about-image">
+      <div class="about-image-placeholder">[ Photo ]</div>
+    </div>
+    <div class="about-content">
+      <span class="label">About</span>
+      <h2>A Remarkable Individual</h2>
+      <p>
+        Born and raised with a deep appreciation for hospitality, I have built a career
+        centered around creating meaningful moments for every guest I serve. My work is
+        guided by precision, care, and a genuine curiosity about people.
+      </p>
+      <p>
+        Whether setting up a breakfast table at sunrise or crafting the perfect welcome
+        for a long-staying guest, I believe every detail tells a story — and every
+        interaction is an opportunity to leave a lasting impression.
+      </p>
+      <div class="about-stats">
+        <div>
+          <div class="stat-label">Experience</div>
+          <div class="stat-value">3+ Years</div>
+        </div>
+        <div>
+          <div class="stat-label">Specialization</div>
+          <div class="stat-value">F&B Service</div>
+        </div>
+        <div>
+          <div class="stat-label">Location</div>
+          <div class="stat-value">Bali, ID</div>
+        </div>
+        <div>
+          <div class="stat-label">Languages</div>
+          <div class="stat-value">ID · EN</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICES ===== -->
+  <section class="services" id="services">
+    <div class="services-header">
+      <div>
+        <span class="label">What I Do</span>
+        <h2>Care is in the details.</h2>
+      </div>
+      <p>
+        Every role I take on is approached with full commitment — from table setup to
+        personalised guest service. Here's what I bring to the table, literally and figuratively.
+      </p>
+    </div>
+    <div class="services-grid">
+      <div class="service-item">
+        <div class="service-icon">☕</div>
+        <h3>Guest Communication</h3>
+        <p>Clear, warm, and professional interaction with guests from diverse cultural backgrounds.</p>
+      </div>
+      <div class="service-item">
+        <div class="service-icon">🍽️</div>
+        <h3>Table & Room Setup</h3>
+        <p>Meticulous arrangement of dining and guest areas according to brand standards and event needs.</p>
+      </div>
+      <div class="service-item">
+        <div class="service-icon">📋</div>
+        <h3>Time Management</h3>
+        <p>Efficient prioritisation during peak hours without compromising service quality or guest satisfaction.</p>
+      </div>
+      <div class="service-item">
+        <div class="service-icon">🤝</div>
+        <h3>Teamwork & Initiative</h3>
+        <p>Collaborative by nature, proactive in problem-solving, and always willing to go the extra mile.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EXPERIENCE ===== -->
+  <section class="experience" id="experience">
+    <div class="experience-left">
+      <span class="label">Career</span>
+      <h2>Behind every good stay.</h2>
+      <p>
+        My professional journey has taken me through reputable properties where I've
+        honed my craft, built meaningful relationships, and grown as a hospitality professional.
+      </p>
+    </div>
+    <div class="experience-right">
+      <div class="exp-card">
+        <div class="exp-card-header">
+          <div>
+            <div class="exp-title">Food & Beverage Attendant</div>
+            <div class="exp-company">Workplace / Hotel Name</div>
+          </div>
+          <div class="exp-year">2024 – Now</div>
+        </div>
+        <p style="font-size:13px;color:var(--text-muted);line-height:1.7">
+          Responsible for daily F&B operations, guest service, and maintaining service standards
+          in a fast-paced hospitality environment.
+        </p>
+        <div class="exp-tags">
+          <span class="tag">F&B Service</span>
+          <span class="tag">Guest Relations</span>
+          <span class="tag">Hospitality</span>
+        </div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-card-header">
+          <div>
+            <div class="exp-title">F&B Trainee</div>
+            <div class="exp-company">Training Property</div>
+          </div>
+          <div class="exp-year">2023</div>
+        </div>
+        <p style="font-size:13px;color:var(--text-muted);line-height:1.7">
+          Completed intensive on-the-job training covering table service, beverage knowledge,
+          and standard operating procedures.
+        </p>
+        <div class="exp-tags">
+          <span class="tag">On-the-job Training</span>
+          <span class="tag">SOP</span>
+        </div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-card-header">
+          <div>
+            <div class="exp-title">Hospitality Student</div>
+            <div class="exp-company">School / University</div>
+          </div>
+          <div class="exp-year">2021 – 2023</div>
+        </div>
+        <p style="font-size:13px;color:var(--text-muted);line-height:1.7">
+          Studied hotel and restaurant management with a focus on front-of-house operations
+          and guest experience design.
+        </p>
+        <div class="exp-tags">
+          <span class="tag">Education</span>
+          <span class="tag">Hotel Management</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GROWTH ===== -->
+  <section class="growth">
+    <div class="growth-header">
+      <div>
+        <span class="label">Development</span>
+        <h2>Small steps. Meaningful growth.</h2>
+      </div>
+      <p>
+        Continuous learning is at the heart of everything I do. Here are the areas I'm
+        actively developing and the achievements I'm proud of.
+      </p>
+    </div>
+    <div class="growth-grid">
+      <div class="growth-col">
+        <span class="label">Achievements</span>
+        <ul class="growth-list">
+          <li>Consistently positive guest feedback scores</li>
+          <li>Completed F&B certification program</li>
+          <li>Recognised for punctuality and reliability</li>
+          <li>Cross-trained in multiple service areas</li>
+        </ul>
+      </div>
+      <div class="growth-col">
+        <span class="label">Currently Learning</span>
+        <ul class="growth-list">
+          <li>Advanced English for hospitality communication</li>
+          <li>Barista & specialty coffee fundamentals</li>
+          <li>Wine & beverage pairing basics</li>
+          <li>Digital tools for hospitality management</li>
+        </ul>
+      </div>
+      <div class="growth-col">
+        <span class="label">Future Goals</span>
+        <ul class="growth-list">
+          <li>Become a senior F&B supervisor</li>
+          <li>Work at an international property</li>
+          <li>Develop training skills for new staff</li>
+          <li>Build a personal brand in hospitality</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONNECT ===== -->
+  <section class="connect">
+    <div class="connect-left">
+      <span class="label">Resources</span>
+      <h2>Keep learning. Stay connected.</h2>
+      <p>
+        A few places I find inspiration, stay updated with industry trends,
+        and continue growing as a professional.
+      </p>
+    </div>
+    <div class="connect-right">
+      <div class="connect-link">
+        <span>LinkedIn Profile</span>
+        <span>↗</span>
+      </div>
+      <div class="connect-link">
+        <span>Hospitality Certifications</span>
+        <span>↗</span>
+      </div>
+      <div class="connect-link">
+        <span>Industry Reading List</span>
+        <span>↗</span>
+      </div>
+      <div class="connect-link">
+        <span>Download CV / Resume</span>
+        <span>↓</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DARK CTA ===== -->
+  <section class="dark-cta">
+    <span class="label">Newsletter</span>
+    <h2>"There's another side to INAS."</h2>
+    <p style="color:rgba(255,255,255,0.45);font-size:13px;margin-bottom:28px">
+      Stay updated with my journey, thoughts, and growth in hospitality.
+    </p>
+    <form class="newsletter-form" onsubmit="return false;">
+      <input type="email" placeholder="Your email address" />
+      <button type="submit">Subscribe</button>
+    </form>
+  </section>
+
+  <!-- ===== CONTACT CTA ===== -->
+  <section class="contact-cta" id="contact">
+    <div class="contact-cta-left">
+      <span class="label">Contact</span>
+      <h2>Let's make a<br><em>thoughtful</em><br>connection.</h2>
+      <a href="mailto:komangari2910@gmail.com" class="btn-primary" style="display:inline-block">
+        Send a message
+      </a>
+    </div>
+    <div class="contact-cta-right">
+      <div>
+        <div class="contact-info-block">
+          <span class="label">Email</span>
+          <p><a href="mailto:komangari2910@gmail.com">komangari2910@gmail.com</a></p>
+        </div>
+        <div class="contact-info-block">
+          <span class="label">Location</span>
+          <p>Bali, Indonesia</p>
+        </div>
+        <div class="contact-info-block">
+          <span class="label">Availability</span>
+          <p>Open to opportunities</p>
+        </div>
+      </div>
+      <p style="font-size:12px;color:var(--text-light)">
+        INAS · I Nyoman Ari Suardana · 2026
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="label">INAS · Personal Website</div>
+        <h3>I Nyoman Ari Suardana</h3>
+        <p>Food & Beverage professional based in Bali, Indonesia. Dedicated to delivering memorable hospitality experiences.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Links</h4>
+        <ul>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Download CV</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:komangari2910@gmail.com">Email</a></li>
+          <li><a href="#">WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 I Nyoman Ari Suardana. All rights reserved.</p>
+      <p>Built with care · Bali, Indonesia</p>
+    </div>
+  </footer>
+
+</body>
+</html>
+

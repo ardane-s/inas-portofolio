@@ -146,8 +146,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const heroContent = document.querySelector('.hero-content-left');
   const hamburgerBtn = document.getElementById('hamburger-toggle');
   const menuOverlay = document.getElementById('menu-overlay');
-  const isMobileHero = window.matchMedia('(max-width: 600px)').matches;
-  let greetingRotationEnabled = !isMobileHero;
+  let greetingRotationEnabled = false;
+  let introSkipped = false;
 
   // ── 2. Cinematic Booting Sequence ──────────────────────────────
   const bootStage = document.getElementById('cinematic-boot');
@@ -199,55 +199,61 @@ document.addEventListener('DOMContentLoaded', () => {
     // ── Deterministic Hero Reveal Sequence (Satu Persatu) ──
 
     setTimeout(() => {
+      if (introSkipped) return;
       if (heroModel) heroModel.classList.add('is-revealed');
-      if (isMobileHero) {
-        const greeting = document.getElementById('hero-greeting-text');
-        if (greeting) {
-          greeting.textContent = 'OM SWASTYASTU';
-          greeting.setAttribute('lang', 'ban');
-          greeting.parentElement.classList.add('is-revealed', 'is-blessing');
-        }
+      const greeting = document.getElementById('hero-greeting-text');
+      if (greeting) {
+        const greetingElement = greeting.parentElement;
+        const greetingRect = greetingElement.getBoundingClientRect();
+        greetingElement.style.setProperty('--hero-greeting-top', `${greetingRect.top}px`);
+        greetingElement.style.setProperty('--hero-greeting-left', `${greetingRect.left}px`);
+        greetingElement.style.setProperty('--hero-greeting-width', `${greetingRect.width}px`);
+        greeting.textContent = 'OM SWASTYASTU';
+        greeting.setAttribute('lang', 'ban');
+        greetingElement.classList.add('is-revealed', 'is-blessing');
       }
     }, 4200);
 
-    // Let the portrait and blessing settle before revealing the rest of the mobile hero.
     setTimeout(() => {
       const mist = document.querySelector('.hero-mist-backdrop');
       const vignette = document.querySelector('.hero-top-vignette');
       if (mist) mist.classList.add('is-revealed');
       if (vignette) vignette.classList.add('is-revealed');
-    }, isMobileHero ? 5700 : 5300);
+    }, 5700);
 
-    if (isMobileHero) {
-      setTimeout(() => {
-        const greeting = document.querySelector('.hero-greeting');
-        if (greeting) greeting.classList.add('is-settling');
-      }, 6600);
+    setTimeout(() => {
+      if (introSkipped) return;
+      const greeting = document.querySelector('.hero-greeting');
+      if (greeting) greeting.classList.add('is-settling');
+    }, 6600);
 
-      setTimeout(() => {
-        const greeting = document.getElementById('hero-greeting-text');
-        if (greeting) {
-          greeting.textContent = 'Om Swastyastu, tityang';
-          greeting.setAttribute('lang', 'ban');
-          greeting.parentElement.classList.remove('is-blessing', 'is-settling');
-        }
-        greetingRotationEnabled = true;
-      }, 7500);
-    }
+    setTimeout(() => {
+      if (introSkipped) return;
+      const greeting = document.getElementById('hero-greeting-text');
+      if (greeting) {
+        greeting.textContent = 'Om Swastyastu, tityang';
+        greeting.setAttribute('lang', 'ban');
+        greeting.parentElement.classList.remove('is-blessing', 'is-settling');
+        greeting.parentElement.style.removeProperty('--hero-greeting-top');
+        greeting.parentElement.style.removeProperty('--hero-greeting-left');
+        greeting.parentElement.style.removeProperty('--hero-greeting-width');
+      }
+      greetingRotationEnabled = true;
+    }, 7500);
 
     setTimeout(() => {
       if (header) header.classList.add('is-revealed');
       if (navBrandGroup) navBrandGroup.classList.add('is-revealed');
       const greeting = document.querySelector('.hero-greeting');
       if (greeting) greeting.classList.add('is-revealed');
-    }, isMobileHero ? 7500 : 5800);
+    }, 7500);
 
     setTimeout(() => {
       const name = document.querySelector('.hero-name');
       const navLinks = document.querySelector('.nav-links-wrap');
       if (name) name.classList.add('is-revealed');
       if (navLinks) navLinks.classList.add('is-revealed');
-    }, isMobileHero ? 7800 : 6100);
+    }, 7800);
 
     setTimeout(() => {
       const prof = document.querySelector('.hero-profession');
@@ -255,14 +261,14 @@ document.addEventListener('DOMContentLoaded', () => {
       if (prof) prof.classList.add('is-revealed');
       if (bio) bio.classList.add('is-revealed');
       if (hamburgerBtn) hamburgerBtn.classList.add('is-revealed');
-    }, isMobileHero ? 8100 : 6400);
+    }, 8100);
 
     setTimeout(() => {
       const actions = document.querySelector('.hero-actions');
       const social = document.querySelector('.social-row');
       if (actions) actions.classList.add('is-revealed');
       if (social) social.classList.add('is-revealed');
-    }, isMobileHero ? 8400 : 6700);
+    }, 8400);
 
     // 4. Foto background hotel PALING TERAKHIR (8.3s)
     setTimeout(() => {
@@ -280,6 +286,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // Skip intro gracefully only on Escape or Space key
     const handleSkip = (e) => {
       if (e && e.type === 'keydown' && e.key !== 'Escape' && e.key !== ' ') return;
+      introSkipped = true;
+      greetingRotationEnabled = true;
+      const greeting = document.getElementById('hero-greeting-text');
+      if (greeting) {
+        greeting.textContent = 'Om Swastyastu, tityang';
+        greeting.setAttribute('lang', 'ban');
+        greeting.parentElement.classList.remove('is-blessing', 'is-settling');
+        greeting.parentElement.style.removeProperty('--hero-greeting-top');
+        greeting.parentElement.style.removeProperty('--hero-greeting-left');
+        greeting.parentElement.style.removeProperty('--hero-greeting-width');
+      }
       document.body.classList.remove('is-booting');
       document.body.classList.add('boot-revealed');
       bootStage.classList.add('is-finished');
